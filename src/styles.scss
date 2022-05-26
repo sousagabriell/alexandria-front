@@ -29,3 +29,28 @@ label{
 .col-md-6{
     padding: 0!important;
 }
+a{
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+    color: $color-primary;
+}
+hr{
+    border-top: 1px solid #3a3a3a !important;
+}
+.btn-primario{
+    padding: 4%;
+    background-color: $color-primary !important;
+    width: 5em;
+    color: #f0f0f0 !important;
+    border-radius: 30px;
+    @media screen and (max-width: 767px){
+        width: 100%;
+        padding: 2%;
+    }
+}
+label{
+    font-family: 'Roboto' !important;
+    font-weight: 300 !important;
+    font-size: 1em !important;
+}

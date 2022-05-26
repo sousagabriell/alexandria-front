@@ -1,8 +1,25 @@
 
 .login-announcement{
-    background-color: #4a80f0;
+ 
+  background: rgb(23,56,125);
+  background: linear-gradient(24deg, rgba(23,56,125,1) 0%, rgba(74,128,240,1) 48%, rgba(0,212,255,1) 100%);
     height: 100vh;
     padding: 25vh 5vw;
+    @media screen and (max-width: 767px){
+  display: none;
+    }
+}
+
+.login{
+  height: 100vh;
+  @media screen and (max-width: 767px){
+    display: block;
+  background: url("../../../../src/assets/images/login/front-view-young-male-student-in-white-t-shirt-wearing-black-mask-and-holding-yellow-files-on-light-blue-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
+  
+  }
 }
 
 
@@ -38,7 +55,13 @@
     opacity: 1;
   }
   
-  
+  #horns{
+    width: 20px!important;
+    border-radius: 30px;
+    @media screen and (max-width: 767px){
+    display: none;
+    }
+  }
   
   
   #slider label {
@@ -80,8 +103,14 @@
   }
   p{
       color: #fdfdfd;
+     
   }
-  
+  .text-login{
+    color: rgb(65, 65, 65);
+    @media screen and (max-width: 767px){
+      color: #d8d8d8;
+    }
+  }
   /* Slider Functionality */
   
   /* Active Slide */
@@ -131,18 +160,93 @@
     box-shadow: 0 0 2em rgb(221, 221, 221);
     padding: 2vh;
     width: 100%;
+    @media screen and (max-width: 767px){
+      display: none;
+    }
+  }
+  .brand-mobile{
+    display: none;
+    @media screen and (max-width: 767px){
+      display: block;
+      padding-top: 2vh;
+      margin-left: 2vw;
+    }
   }
 
+  .blur-mobile{
+    @media screen and (max-width: 767px){
+    -webkit-filter: blur(5px);
+    filter: blur(2px) !important;
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+
+    display: f;
+    
+    
+    position: absolute;
+    
+    background: rgb(23,56,125);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: unset;
+    height: 56vh;
+    width: 95vw;
+    margin: 17vh 0 0 2%;
+    opacity: 0.9;
+    }
+  }
   .login-account{
-    padding: 25vh 5vw;
+    padding: 19vh 5vw;
+    @media screen and (max-width: 767px){
+      z-index: 9;
+      display: block;
+      position: sticky;
+    }
 }
 h2{
     color: rgb(65, 65, 65);
+    @media screen and (max-width: 767px){
+      color: #fdfdfd;
+    }
 }
 label{
     margin-right: 2em;
+    @media screen and (max-width: 767px){
+      display: none;
+    }
 }
 input{
     width: 25vw;
     border-radius: 12px;
+    @media screen and (max-width: 767px){
+      width: 88vw;
+      height: 6vh;
+      margin-top: 1vh;
+    }
+}
+hr{
+  @media screen and (max-width: 767px){
+    border-top: 3px solid #fdfdfd !important;
+  }
+}
+.text-right{
+  text-align: right;
+}
+a{
+  @media screen and (max-width: 767px){
+    color:#fac328;
+  }
+}
+.text-cadastro{
+  color: #414141;
+  @media screen and (max-width: 767px){
+    color: #fdfdfd;
+  }
+  
+}
+.row{
+  @media screen and (max-width: 767px){
+    display: block;
+  }
 }
