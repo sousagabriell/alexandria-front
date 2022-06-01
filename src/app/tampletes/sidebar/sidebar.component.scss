@@ -1,0 +1,178 @@
+#checkbox-menu{
+    position: absolute;
+    opacity: 0;
+}
+label{
+    cursor: pointer;
+    position: relative;
+    display: block;
+    height: 22px;
+    width: 30px;
+}
+
+label span{
+    position: absolute;
+    display: block;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background: #707070;
+    transition: 0.4s ease-in-out;
+}
+
+label span:nth-child(1){
+    top:0
+}
+label span:nth-child(2){
+    top:8px
+}
+label span:nth-child(3){
+    top:16px
+}
+
+#checkbox-menu:checked + label span:nth-child(1){
+    transform:rotate(-45deg);
+    top: 8px;
+}
+
+#checkbox-menu:checked + label span:nth-child(2){
+    opacity: 0;
+}
+
+#checkbox-menu:checked + label span:nth-child(3){
+    transform:rotate(45deg);
+    top: 8px;
+}
+
+.menu-hamburguer{
+
+    height: 10vh;
+    z-index: 1;
+    background: #071125;
+    top: 0;
+    display: none !important;
+    align-items: center;
+    padding: 0 7%;
+    width: 100%;
+}
+
+.pesquisa-bar{
+    width: 100%;
+    background-color: #071125;
+    height: 5vh;
+}
+.icon-nav label{
+    margin-right: 4% ;
+}
+.dropdown-menu{
+    width: 20em;
+    padding: 10px;
+}
+
+ li{
+    border:none
+ }
+ .list{
+    padding-left: 0.5em;
+ }
+ .navigator{
+    position: fixed;
+    height: 100vh;
+    background-color: #071125;
+   width: 20em;
+}
+
+.link{
+    background-color: #071125;
+}
+.link img{
+    cursor: pointer;
+}
+
+.link a{
+    text-decoration: none;
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    
+}
+.link a:hover{
+    border-bottom: 2px solid #FF006E;
+}
+
+
+ng-sidebar-container{
+    height: 100vh !important;
+    position: absolute;
+  
+ 
+}
+::ng-deep .ng-sidebar{
+    background-color: #fff;
+    width: 20em;
+    border-right: 2px solid #000;
+    height: 100vh;
+    border-radius: 10px;
+}
+
+.modal-login{
+    background-color: #0F1D38;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+.modal-header{
+    border: none;
+}
+.chamada{
+    width: 80%;
+    margin: 0 auto;
+}
+.button{
+    background-color: #FF006E;
+    width: 8em;
+    border-radius: 7px;
+    height: 3em;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+input{
+    background-color: #071125;
+    height: 8vh;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+h6{
+    font-family: 'Poppins', sans-serif;
+}
+p a{
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media (max-width: 1111px){
+    .navigator{
+        width: 17em;
+    }
+}
+
+
+@media (max-width: 896px){
+    .navigator{
+        width: 12em;
+    }
+}
+@media (max-width: 769px){
+    .menu-hamburguer{
+        display: flex !important;
+        justify-content: space-between;
+    }
+    .navigator{
+        display: none;
+    }
+    ng-sidebar-container{
+        position: absolute;
+        overflow: hidden;
+    }
+}

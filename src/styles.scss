@@ -2,7 +2,8 @@ $color-primary:#4a80f0;
 $color-secundary: #1a1a23;
 $color-tercery: #fdfdfd;
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/lato');
+@import url('http://fonts.cdnfonts.com/css/tt-norms-pro');
 
 body{
     background-color: #f0f0f0;
@@ -10,19 +11,19 @@ body{
 
 h3{
     color: #fdfdfd;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'TT Norms Pro', sans-serif;
     font-weight: 700 !important;
 }
 h2{
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'TT Norms Pro', sans-serif;
     font-weight: 800 !important;
 }
 p{
-    font-family: 'Roboto' !important;
+    font-family: 'Lato', sans-serif;
     font-weight: 300 !important;
 }
 label{
-    font-family: 'Roboto' !important;
+    font-family: 'Lato', sans-serif;
     font-weight: 800 !important;
     font-size: 1.2rem !important;
 }
@@ -30,7 +31,7 @@ label{
     padding: 0!important;
 }
 a{
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'TT Norms Pro', sans-serif;
     font-weight: 800 !important;
     text-decoration: none !important;
     color: $color-primary;
@@ -53,4 +54,7 @@ label{
     font-family: 'Roboto' !important;
     font-weight: 300 !important;
     font-size: 1em !important;
+}
+.color-primary{
+    background-color: $color-primary;
 }

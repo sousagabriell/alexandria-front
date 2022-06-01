@@ -5,15 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './tampletes/login/login.component';
 import { DashboardComponent } from './tampletes/dashboard/dashboard.component';
+import { SidebarComponent } from './tampletes/sidebar/sidebar.component';
+import {SidebarModule } from 'ng-sidebar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
+    SidebarModule.forRoot(),
     AppRoutingModule
   ],
   providers: [],

@@ -1,0 +1,14 @@
+$color-primary:#4a80f0;
+$color-secundary: #1a1a23;
+$color-tercery: #fdfdfd;
+
+.sobre{
+    background-color: $color-primary;
+    height: 100vh;
+}
+.position{
+    position: sticky;
+}
+.row{
+    --bs-gutter-x: 0 !important;
+}
