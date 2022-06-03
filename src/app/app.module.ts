@@ -7,6 +7,7 @@ import { LoginComponent } from './tampletes/login/login.component';
 import { DashboardComponent } from './tampletes/dashboard/dashboard.component';
 import { SidebarComponent } from './tampletes/sidebar/sidebar.component';
 import {SidebarModule } from 'ng-sidebar';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {SidebarModule } from 'ng-sidebar';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
