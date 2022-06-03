@@ -11,9 +11,17 @@ import { AppApiService } from 'src/app/core/services/app-api.service';
 export class DashboardComponent implements OnInit {
 
   constructor(private appApi: AppApiService) { }
-  
+
   books$: Observable<Book[]> = this.appApi.getBooks();
+  bookById$: Observable<Book> = this.appApi.getBookById(1);
+
   ngOnInit(): void {
   }
+
+  getBookById(id: number) {
+    this.bookById$ = this.appApi.getBookById(id);
+  }
+
+
 
 }

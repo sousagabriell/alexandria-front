@@ -1,6 +1,8 @@
 export interface Book {
     id: number;
     titulo: string;
+    autor?: any;
+    foto?: any;
     subtitulo: string;
     edicao: string;
     ano: string;
