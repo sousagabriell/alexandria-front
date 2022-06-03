@@ -14,4 +14,5 @@ export interface Book {
     idioma: string;
     fisico: boolean;
     lido: boolean;
+    tipo: string;
 }

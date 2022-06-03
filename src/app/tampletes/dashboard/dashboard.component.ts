@@ -12,15 +12,40 @@ export class DashboardComponent implements OnInit {
 
   constructor(private appApi: AppApiService) { }
 
-  books$: Observable<Book[]> = this.appApi.getBooks();
-  bookById$: Observable<Book> = this.appApi.getBookById(1);
+  books$: Observable<Book[]> = this.appApi.getBooksKindle();
+  bookById$: Observable<Book> = this.appApi.getBookKindleById(1);
 
   ngOnInit(): void {
   }
 
-  getBookById(id: number) {
-    this.bookById$ = this.appApi.getBookById(id);
+  getBookKindle() {
+    this.books$ = this.appApi.getBooksKindle();
   }
+
+  getBookFisics() {
+    this.books$ = this.appApi.getBooksFisics();
+  }
+
+  getBookById(id: number, tipe: string) {
+    switch (tipe) {
+      case "fisico": {
+        this.bookById$ = this.appApi.getBooksFisicsById(id);
+        break;
+      }
+      case "kindle": {
+        this.bookById$ = this.appApi.getBookKindleById(id);
+        break;
+      }
+      default: {
+        this.bookById$ = this.appApi.getBookKindleById(id);
+        break;
+      }
+    }
+  }
+
+
+
+
 
 
 

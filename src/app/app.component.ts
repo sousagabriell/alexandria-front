@@ -11,14 +11,12 @@ import { AppApiService } from './core/services/app-api.service';
 export class AppComponent implements OnInit {
 
   title = 'alexandria';
-  constructor(private appApi: AppApiService) { }
+  constructor() { }
 
-  books$: Observable<Book[]> = this.appApi.getBooks();
 
 
   ngOnInit(): void {
     
-    console.log(this.appApi.getBooks())
     
   }
 
