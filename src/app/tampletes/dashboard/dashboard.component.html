@@ -1,100 +1,103 @@
-
 <div class="row">
-    <div class="col-md-3">
-        <app-sidebar></app-sidebar>
-    </div>
-    <div class="col-md-6 position">
-        <h2 class="my-4">Bem-Vindo, usuario</h2>
-        
+  <div class="col-md-3">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-md-6 position">
+    <h2 class="my-4">Bem-Vindo, usuario</h2>
 
-        <ul class="nav nav-tabs navigator">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Kindle</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Fisícos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pdf</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teses</a>
-            </li>
-          </ul>
-        
-        <div class="w-100 d-flex justify-content-between">
-        <div class="w-50">
+
+    <ul class="nav nav-tabs navigator">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Kindle</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Fisícos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pdf</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teses</a>
+      </li>
+    </ul>
+
+    <div class="w-100 d-flex justify-content-between">
+      <div class="w-50">
         <h6 class="my-4">Para você</h6>
-        </div>
-        <div class="search-box">
-            <input type="text" class="search-text" placeholder="Pesquisar...">
-            <a class="search-btn">
-            <img src="../../../assets/icons/search1.png" alt="" class="loupe-blue">
-            <img src="../../../assets/icons/search.png" alt="" class="loupe-white">
+      </div>
+      <div class="search-box">
+        <input type="text" class="search-text" placeholder="Pesquisar...">
+        <a class="search-btn">
+          <img src="../../../assets/icons/search1.png" alt="" class="loupe-blue">
+          <img src="../../../assets/icons/search.png" alt="" class="loupe-white">
         </a>
-        </div>
-        <div class="filter">
+      </div>
+      <div class="filter">
         <img src="../../../assets/icons/filter.png" alt="" height="25px">
       </div>
+    </div>
+
+    <div class="tab-content " id="nav-tabContent">
+      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
+        aria-labelledby="nav-todasPostagens-tab">
+
+        <div class="card book" style="width: 18rem;" *ngFor="let book of books$ |async">
+
+          <div class="image">
+            <img src="../../../assets/teste.jpg" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body W-100">
+            <div class="d-flex justify-content-between">
+              <h6 class="card-title mt-2">{{book.titulo}}</h6>
+              <img src="../../../assets/icons/more.png" alt="" height="35px">
+              <p class="read">{{book.lido}}</p>
+            </div>
+            <p class="card-text">{{book.editora}}</p>
+            <a href="#" class="btn btn-primario w-100">Ver mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
+        aria-labelledby="nav-todasPostagens-tab">
+
+      </div>
+      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
+        aria-labelledby="nav-todasPostagens-tab">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 position sobre">
+
+    <h3 class="text-center my-4">Sobre o Livro</h3>
+    <div class="image-about text-center">
+      <img src="../../../assets/teste.jpg" class="card-img-top" alt="...">
+    </div>
+    <h4 class="text-center mt-4 mb-2 text-white">blas sajasfbi</h4>
+    <p class="text-center text-white">Jorge Amado</p>
+    <div class="ficha">
+      <h6 class="mt-4 mb-3 text-white">Subtitulo:</h6>
+      <h6 class="mb-3 text-white">Cidade:</h6>
+      <h6 class="mb-3 text-white">Editora:</h6>
+      <h6 class="mb-3 text-white">Lido:</h6>
+      <h6 class="mb-3 text-white">Gênero:</h6>
+      <h6 class="mb-3 text-white">Subgenero:</h6>
+      <h6 class="mb-3 text-white">Idioma:</h6>
+      <div class="d-flex w-100 justify-content-between">
+        <div class="info-number">
+          <h6 class="text-white text-center">Edição:</h6>
+          <p class="text-white text-center">4</p>
         </div>
 
-        <div class="tab-content " id="nav-tabContent">
-            <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
-               
-                <div class="card book" style="width: 18rem;">
-                    
-                    <div class="image">
-                    <img src="../../../assets/teste.jpg" class="card-img-top" alt="...">
-                    </div>  
-                    <div class="card-body W-100">
-                      <div class="d-flex justify-content-between">
-                      <h6 class="card-title mt-2">Capitães de Areia</h6>
-                      <img src="../../../assets/icons/more.png" alt="" height="35px">
-                      <p class="read">lido</p>
-                    </div>
-                      <p class="card-text">Jorge amado</p>
-                      <a href="#" class="btn btn-primario w-100">Ver mais</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
-
-            </div>
-            <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
-                
-            </div>
+        <div class="info-number">
+          <h6 class="text-white text-center">Ano:</h6>
+          <p class="text-white text-center">4</p>
         </div>
+        <div class="info-number">
+          <h6 class="text-white text-center">Nacional ?</h6>
+          <p class="text-white text-center">Sim</p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-3 position sobre">
-        <h3 class="text-center my-4">Sobre o Livro</h3>
-        <div class="image-about text-center">
-        <img src="../../../assets/teste.jpg" class="card-img-top" alt="...">
-        </div>
-        <h4 class="text-center mt-4 mb-2 text-white">Capitães de Areia</h4>
-        <p class="text-center text-white">Jorge Amado</p>
-        <div class="ficha">
-        <h6 class="mt-4 mb-3 text-white">Subtitulo:</h6>
-        <h6 class="mb-3 text-white">Cidade:</h6>
-        <h6 class="mb-3 text-white">Editora:</h6>
-        <h6 class="mb-3 text-white">Lido:</h6>
-        <h6 class="mb-3 text-white">Gênero:</h6>
-        <h6 class="mb-3 text-white">Subgenero:</h6>
-        <h6 class="mb-3 text-white">Idioma:</h6>
-        <div class="d-flex w-100 justify-content-between">
-           <div class="info-number">
-                <h6 class="text-white text-center">Edição:</h6>
-                <p class="text-white text-center">4</p>
-            </div>
-           
-            <div class="info-number">
-                <h6 class="text-white text-center">Ano:</h6>
-                <p class="text-white text-center">4</p>
-            </div>
-            <div class="info-number">
-                <h6 class="text-white text-center">Nacional ?</h6>
-                <p class="text-white text-center">Sim</p>
-            </div>
-        </div>
-        </div>
-    </div>
+  </div>
 </div>

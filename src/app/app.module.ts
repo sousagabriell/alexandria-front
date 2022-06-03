@@ -7,7 +7,7 @@ import { LoginComponent } from './tampletes/login/login.component';
 import { DashboardComponent } from './tampletes/dashboard/dashboard.component';
 import { SidebarComponent } from './tampletes/sidebar/sidebar.component';
 import {SidebarModule } from 'ng-sidebar';
-import { NavComponent } from './nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,12 +16,13 @@ import { NavComponent } from './nav/nav.component';
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
-    NavComponent
+    
   ],
   imports: [
     BrowserModule,
     SidebarModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
