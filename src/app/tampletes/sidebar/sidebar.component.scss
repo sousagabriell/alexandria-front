@@ -86,18 +86,21 @@ label span:nth-child(3){
    width: 20em;
 }
 .settings{
-    
-    display: flex;
-    justify-content: flex-end;
     cursor: pointer;
-    margin-top: 4vh;
-    margin-right: 2vh;
+    margin-top: 4.2vh;
+    margin-left: 80%;;
+    background-color: #4a81f069;
+    width: 16%;
+    height: 5vh;
+    padding: 7px 7px;
+    border-radius: 50px;
 }
-.img-settings{
-    background-color: #FF006E;
+.settings:hover{
+    transform: rotate(359deg);
+    transition: 5s;
 }
 .link{
-    background-color: #101022;
+    background-color: $color-secundary;
 }
 .link img{
     cursor: pointer;
@@ -112,7 +115,7 @@ label span:nth-child(3){
     
 }
 .link a:hover{
-    border-bottom: 2px solid #FF006E;
+    border-bottom: 2px solid $color-primary;
 }
 
 
@@ -155,6 +158,10 @@ input{
     border-radius: 8px;
     border: 1px solid #fff;
     color: #fff;
+}
+hr{
+    border:2px solid #fff;
+    margin: 0 auto;
 }
 h6{
     font-family: 'Poppins', sans-serif;
