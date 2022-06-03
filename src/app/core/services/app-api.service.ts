@@ -14,6 +14,10 @@ export class AppApiService {
     return this.httpApi.get<Book[]>("/livroskindle");
   }
 
-  
+  getBookById(id: number): Observable<Book> {
+    return this.httpApi.get<Book>("/livroskindle/id", { 'id': id })
+  }
+
+
 
 }
