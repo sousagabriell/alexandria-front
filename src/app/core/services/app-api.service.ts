@@ -11,19 +11,23 @@ export class AppApiService {
   constructor(private httpApi: HttpApiService) { }
 
   getBooksKindle(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/livroskindle");
+    return this.httpApi.get<Book[]>("/kindle");
   }
-  
+
   getBooksFisics(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/livrosfisicos");
+    return this.httpApi.get<Book[]>("/fisico");
   }
 
   getBookKindleById(id: number): Observable<Book> {
-    return this.httpApi.get<Book>("/livroskindle/id", { 'id': id })
+    return this.httpApi.get<Book>("/kindle", { 'id': id })
   }
 
   getBooksFisicsById(id: number): Observable<Book> {
-    return this.httpApi.get<Book>("/livrosfisicos/id", { 'id': id })
+    return this.httpApi.get<Book>("/fisico", { 'id': id })
+  }
+
+  postBookFisic(body: any): Observable<any> {
+    return this.httpApi.post("/fisico", body)
   }
 
 

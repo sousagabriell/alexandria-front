@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   bookById$: Observable<Book> = this.appApi.getBookKindleById(1);
 
   ngOnInit(): void {
+
   }
 
   getBookKindle() {
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getBookById(id: number, tipe: string) {
+    debugger
     switch (tipe) {
       case "fisico": {
         this.bookById$ = this.appApi.getBooksFisicsById(id);
@@ -41,6 +43,24 @@ export class DashboardComponent implements OnInit {
         break;
       }
     }
+  }
+
+  postBookFisic() {
+    debugger
+    this.appApi.postBookFisic({
+      autor: "JK",
+      titulo: "Harry Potter 8",
+      subtitulo: "Pedra Filosofal",
+      ano: "1999",
+      cidade: "ferwf",
+      genero: "Romance",
+      subgenero: "Ficção",
+      nacional: true,
+      idioma: "PT-BR", 
+      foto: "https://a-static.mlcdn.com.br/1500x1500/title-reference/magazineluiza/225550400/91f8f89fbbc0b205d649ce1bf88dff86.jpg",
+      edicao: "3",
+      editora: "JK"
+    });
   }
 
 

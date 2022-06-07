@@ -15,4 +15,5 @@ export interface Book {
     fisico: boolean;
     lido: boolean;
     tipo: string;
+    tipo_livro:string;
 }

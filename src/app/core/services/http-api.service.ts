@@ -58,7 +58,7 @@ export class HttpApiService {
       this.http
         .post<payloadT>(
           `${environment.baseUrl}/${endPointUrl}`,
-          payload,
+          payload
         )
         .pipe(catchError((error) =>
           this.handleError(error)
