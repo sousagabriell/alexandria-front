@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/core/interfaces/book';
 import { AppApiService } from 'src/app/core/services/app-api.service';
+import { BookState } from 'src/app/core/store';
+import { selectBookShelf } from 'src/app/core/store/app.selector';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +13,9 @@ import { AppApiService } from 'src/app/core/services/app-api.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private appApi: AppApiService) { }
+  constructor(private appApi: AppApiService,  private storeApp: Store<{app: BookState}>) { }
 
-  books$: Observable<Book[]> = this.appApi.getBooksKindle();
+  books$: Observable<Book[]> = this.storeApp.pipe(select(selectBookShelf));
   bookById$: Observable<Book> = this.appApi.getBookKindleById(1);
 
   ngOnInit(): void {
@@ -20,7 +23,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getBookKindle() {
-    this.books$ = this.appApi.getBooksKindle();
+    this.books$ = this.storeApp.pipe(select(selectBookShelf));
   }
 
   getBookFisics() {

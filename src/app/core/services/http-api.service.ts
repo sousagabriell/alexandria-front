@@ -7,6 +7,8 @@ import { catchError, shareReplay } from 'rxjs/operators';
 import * as queryString from 'query-string';
 
 import { environment } from 'src/environments/environment';
+import { Store } from '@ngrx/store';
+import { generalError } from '../store/app.actions';
 
 
 @Injectable({
@@ -14,7 +16,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HttpApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storeApp: Store<{ app: any }>) { }
 
   get<payloadT>(endPointUrl: string, payload?: any): Observable<payloadT> {
     const params = payload
@@ -25,7 +27,7 @@ export class HttpApiService {
 
     return new Observable((observer) => {
       this.http
-        .get<payloadT>(environment.baseUrl+endPointUrl, {
+        .get<payloadT>(environment.baseUrl + endPointUrl, {
           params
         })
         .pipe(shareReplay(), catchError((error) => this.handleError(error)))
@@ -70,14 +72,12 @@ export class HttpApiService {
     });
   }
 
-  private handleError(err: any): Observable<never> {
-
-    let errorMessage: string;
-    if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
-    }
-    return throwError(errorMessage);
+  handleError(error: string) {
+    this.storeApp.dispatch(
+      generalError({ data: { isErro: true, errorMessagr: error } })
+    );
+    return of({
+      error
+    })
   }
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Book } from './core/interfaces/book';
-import { AppApiService } from './core/services/app-api.service';
+import { select, Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import { BookState } from './core/store';
+import { getBookShelf } from './core/store/app.actions';
+import { selectBookShelf } from './core/store/app.selector';
+
 
 @Component({
   selector: 'app-root',
@@ -11,15 +14,25 @@ import { AppApiService } from './core/services/app-api.service';
 export class AppComponent implements OnInit {
 
   title = 'alexandria';
-  constructor() { }
+  books$!: Observable<any>;
 
+  subscription = new Subscription();
 
+  constructor( private storeApp: Store<{app: BookState}>) { }
 
   ngOnInit(): void {
-    
+    this.storeApp.dispatch(getBookShelf());
+    this.initializeStore();
     
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  private initializeStore() {
+    this.books$ = this.storeApp.pipe(select(selectBookShelf))
+  }
 
   
 }
