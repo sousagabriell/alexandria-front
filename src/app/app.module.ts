@@ -13,6 +13,7 @@ import { metaReducers, reducers } from './core/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './core/store/app.effects';
+import { ExcelComponent } from './tampletes/excel/excel.component';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { AppEffects } from './core/store/app.effects';
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
-
+    ExcelComponent
   ],
   imports: [
     BrowserModule,

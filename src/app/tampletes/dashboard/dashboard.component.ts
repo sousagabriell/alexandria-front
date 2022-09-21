@@ -38,14 +38,14 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  getBookByName(name: string) {
-    debugger
-    this.bookShelf$ = this.bookShelf$.pipe(
-      map(bookShelf => {
-        return bookShelf.filter(book => book.titulo?.includes(name))
-      })
-    )
-  }
+  // getBookByName(name: string) {
+  //   debugger
+  //   this.bookShelf$ = this.bookShelf$.pipe(
+  //     switchMap(bookShelf => {
+  //       return bookShelf.filter(book => book.titulo?.includes(name))
+  //     })
+  //   ).subscribe();
+  // }
 
   postBookFisic() {
     debugger
