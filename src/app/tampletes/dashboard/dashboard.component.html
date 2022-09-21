@@ -8,13 +8,13 @@
 
     <ul class="nav nav-tabs navigator">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Kindle</a>
+        <a class="nav-link active" (click)="getBookKindle()" >Kindle</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fisícos</a>
+        <a class="nav-link" (click)="getBookFisics()">Fisícos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pdf</a>
+        <a class="nav-link" >Pdf</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Teses</a>
@@ -42,7 +42,7 @@
         aria-labelledby="nav-todasPostagens-tab">
         <div class="d-block">
           <div class="d-flex flex-wrap container">
-            <div class="card book mx-2 mt-4" style="width: 27%;" *ngFor="let book of books$ |async">
+            <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of books$ |async">
 
               <div class="image">
                 <img src="{{book.foto}}" class="card-img-top" alt="...">
