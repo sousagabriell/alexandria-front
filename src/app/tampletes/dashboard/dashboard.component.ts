@@ -32,8 +32,17 @@ export class DashboardComponent implements OnInit {
 
   getBookById(id: number) {
     this.bookById$ = this.bookShelf$.pipe(
-      switchMap (bookShelf => {
+      switchMap(bookShelf => {
         return bookShelf.filter(book => book.id == id)
+      })
+    )
+  }
+
+  getBookByName(name: string) {
+    debugger
+    this.bookShelf$ = this.bookShelf$.pipe(
+      map(bookShelf => {
+        return bookShelf.filter(book => book.titulo?.includes(name))
       })
     )
   }
