@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private appApi: AppApiService) { }
 
   books$: Observable<Book[]> = this.appApi.getBooks();
-  bookById$: Observable<Book> = this.appApi.getBookById(1);
+  bookById$: Observable<Book> = this.appApi.getBookById(7);
 
   ngOnInit(): void {
   }

@@ -8,6 +8,7 @@ import { DashboardComponent } from './tampletes/dashboard/dashboard.component';
 import { SidebarComponent } from './tampletes/sidebar/sidebar.component';
 import {SidebarModule } from 'ng-sidebar';
 import { HttpClientModule } from '@angular/common/http';
+import { ExcelComponent } from './tampletes/excel/excel.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
+    ExcelComponent,
     
   ],
   imports: [

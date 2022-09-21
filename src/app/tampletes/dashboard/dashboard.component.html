@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <app-sidebar></app-sidebar>
+
   </div>
   <div class="col-md-6 position">
     <h2 class="my-4">Bem-Vindo, usuario</h2>
@@ -42,7 +42,7 @@
         aria-labelledby="nav-todasPostagens-tab">
         <div class="d-block">
           <div class="d-flex flex-wrap container">
-            <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of books$ |async">
+            <div class="card book mx-2 mt-4" style="width: 27%;" *ngFor="let book of books$ |async">
 
               <div class="image">
                 <img src="{{book.foto}}" class="card-img-top" alt="...">
@@ -84,13 +84,13 @@
     <h4 class="text-center mt-4 mb-2 text-white">{{book.titulo}}</h4>
     <p class="text-center text-white">{{book.autor}}</p>
     <div class="ficha">
-      <h6 class="mt-4 mb-3 text-white">Subtitulo: {{book.subtitulo}}</h6>
-      <h6 class="mb-3 text-white">Cidade: {{book.cidade}}</h6>
-      <h6 class="mb-3 text-white">Editora: {{book.editora}}</h6>
-      <h6 class="mb-3 text-white">Lido: {{book.lido}}</h6>
-      <h6 class="mb-3 text-white">Gênero: {{book.genero}}</h6>
-      <h6 class="mb-3 text-white">Subgenero: {{book.subgenero}}</h6>
-      <h6 class="mb-3 text-white">Idioma: {{book.idioma}}</h6>
+      <h6 class="mt-4 mb-3 text-white d-flex">Subtitulo: <p class="mx-2">{{book.subtitulo}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Cidade: <p class="mx-2">{{book.cidade}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Editora: <p class="mx-2">{{book.editora}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Lido: <p class="mx-2">{{book.lido}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Gênero: <p class="mx-2">{{book.genero}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Subgenero: <p class="mx-2">{{book.subgenero}}</p></h6>
+      <h6 class="mb-3 text-white d-flex">Idioma: <p class="mx-2">{{book.idioma}}</p></h6>
       <div class="d-flex w-100 justify-content-between">
         <div class="info-number">
           <h6 class="text-white text-center">Edição:</h6>
