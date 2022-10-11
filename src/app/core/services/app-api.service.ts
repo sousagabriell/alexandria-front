@@ -18,6 +18,14 @@ export class AppApiService {
     return this.httpApi.get<Book[]>("/fisico");
   }
 
+  getPdf(): Observable<Book[]> {
+    return this.httpApi.get<Book[]>("/pdf");
+  }
+
+  getTeses(): Observable<Book[]> {
+    return this.httpApi.get<Book[]>("/teses");
+  }
+
   getBookKindleById(id: number): Observable<Book> {
     return this.httpApi.get<Book>("/kindle", { 'id': id })
   }

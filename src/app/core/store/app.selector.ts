@@ -5,4 +5,7 @@ export const selectAppState = createFeatureSelector<fromApp.BookState>(
     'app'
 );
 
-export const selectBookShelf = createSelector(selectAppState, state => state?.bookShelf);
+export const selectBookShelfKindle = createSelector(selectAppState, state => state?.bookShelfKindle);
+export const selectBookShelfFisic = createSelector(selectAppState, state => state?.bookShelfFisic);
+export const selectBookShelfPdf = createSelector(selectAppState, state => state?.bookShelfPdf);
+export const selectBookShelfTeses = createSelector(selectAppState, state => state?.bookShelfTeses);

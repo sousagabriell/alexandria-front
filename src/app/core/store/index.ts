@@ -6,25 +6,58 @@ import { clearState } from './clear-state';
 
 
 export interface BookState {
-    bookShelf: Book[];
+    bookShelfKindle: Book[];
+    bookShelfFisic: Book[];
+    bookShelfPdf: Book[];
+    bookShelfTeses: Book[];
     generalError: any;
 }
 
 
 export const InitialBookState: BookState = {
-    bookShelf: [],
+    bookShelfKindle: [],
+    bookShelfFisic: [],
+    bookShelfPdf: [],
+    bookShelfTeses: [],
     generalError: null
 }
 
 const appReducer = createReducer(
     InitialBookState,
-    on(AppActions.getBookShelf, (state) => {
+    on(AppActions.getBookShelfKindle, (state) => {
         return { ...state, ...{} };
     }),
-    on(AppActions.getBookShelfSuccess, (state, action) => {
-        return { ...state, ...{ bookShelf: action.bookShelf } };
+    on(AppActions.getBookShelfKindleSuccess, (state, action) => {
+        return { ...state, ...{ bookShelfKindle: action.bookShelfKindle } };
     }),
-    on(AppActions.getBookShelfFailure, (state, action) => {
+    on(AppActions.getBookShelfKindleFailure, (state, action) => {
+        return { ...state, ...{ generalError: action.error } };
+    }),
+    on(AppActions.getBookShelfFisic, (state) => {
+        return { ...state, ...{} };
+    }),
+    on(AppActions.getBookShelfFisicSuccess, (state, action) => {
+        return { ...state, ...{ bookShelfFisic: action.bookShelfFisic } };
+    }),
+    on(AppActions.getBookShelfFisicFailure, (state, action) => {
+        return { ...state, ...{ generalError: action.error } };
+    }),
+    on(AppActions.getBookShelfPdf, (state) => {
+        return { ...state, ...{} };
+    }),
+    on(AppActions.getBookShelfPdfSuccess, (state, action) => {
+        return { ...state, ...{ bookShelfPdf: action.bookShelfPdf } };
+    }),
+    on(AppActions.getBookShelfPdfFailure, (state, action) => {
+        return { ...state, ...{ generalError: action.error } };
+    }),
+    on(AppActions.getBookShelfTeses, (state) => {
+        return { ...state, ...{} };
+    }),
+    on(AppActions.getBookShelfTesesSuccess, (state, action) => {
+        return { ...state, ...{ bookShelfTeses: action.bookShelfTeses } };
+    }),
+    on(AppActions.getBookShelfTesesFailure, (state, action) => {
         return { ...state, ...{ generalError: action.error } };
     }),
     on(AppActions.generalError, (state, {data}) => {

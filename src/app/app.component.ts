@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { BookState } from './core/store';
-import { getBookShelf } from './core/store/app.actions';
-import { selectBookShelf } from './core/store/app.selector';
-
+import { getBookShelfKindle, getBookShelfFisic, getBookShelfPdf, getBookShelfTeses } from './core/store/app.actions';
 
 @Component({
   selector: 'app-root',
@@ -21,18 +19,16 @@ export class AppComponent implements OnInit {
   constructor( private storeApp: Store<{app: BookState}>) { }
 
   ngOnInit(): void {
-    this.storeApp.dispatch(getBookShelf());
-    this.initializeStore();
-    
+    this.storeApp.dispatch(getBookShelfKindle());
+    this.storeApp.dispatch(getBookShelfFisic());
+    this.storeApp.dispatch(getBookShelfPdf());
+    this.storeApp.dispatch(getBookShelfTeses());
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  private initializeStore() {
-    this.books$ = this.storeApp.pipe(select(selectBookShelf))
-  }
 
   
 }

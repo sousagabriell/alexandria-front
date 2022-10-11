@@ -16,4 +16,7 @@ export interface Book {
     lido?: boolean;
     tipo?: string;
     tipo_livro?:string;
+    kindle?:boolean;
+    pasta?:string;
+    instituicao?:string;
 }
