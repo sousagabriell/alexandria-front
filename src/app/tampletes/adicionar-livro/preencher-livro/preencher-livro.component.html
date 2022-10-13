@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9 position">
+        <input type="text" placeholder="titulo">
+        <input type="text" placeholder="subtitulo">
+        <input type="text" placeholder="autor">
+        <input type="text" placeholder="link foto">
+        <input type="text" placeholder="ano">
+        <input type="text" placeholder="genero">
+        <input type="text" placeholder="subgenero">
+        <input type="text" placeholder="idioma">
+        <input type="text" placeholder="cidade">
+        <input type="text" placeholder="livro nacional?">
+
+        <div *ngIf="this.appApiService.bookType=='fisico'">
+            <input type="text" placeholder="edicao">
+            <input type="text" placeholder="editora">
+        </div>
+
+        <div *ngIf="this.appApiService.bookType=='kindle'">
+            <input type="text" placeholder="edicao">
+            <input type="text" placeholder="editora">
+            <input type="text" placeholder="fisico">
+        </div>
+
+        <div *ngIf="this.appApiService.bookType=='pdf'">
+            <input type="text" placeholder="edicao">
+            <input type="text" placeholder="editora">
+            <input type="text" placeholder="pasta">
+            <input type="text" placeholder="tenho kindle?">
+            <input type="text" placeholder="tenho fisico?">
+        </div>
+
+        <div *ngIf="this.appApiService.bookType=='teses'">
+            <input type="text" placeholder="instituição">
+            <input type="text" placeholder="editora">
+            <input type="text" placeholder="tipo">
+        </div>
+
+    </div>
+</div>

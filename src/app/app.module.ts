@@ -14,6 +14,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './core/store/app.effects';
 import { ExcelComponent } from './tampletes/excel/excel.component';
+import { TipoLivroComponent } from './tampletes/adicionar-livro/tipo-livro/tipo-livro.component';
+import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-livro/preencher-livro.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ExcelComponent } from './tampletes/excel/excel.component';
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
-    ExcelComponent
+    ExcelComponent,
+    TipoLivroComponent,
+    PreencherLivroComponent
   ],
   imports: [
     BrowserModule,

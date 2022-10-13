@@ -30,13 +30,11 @@ export class AppApiService {
     return this.httpApi.get<Book>("/kindle", { 'id': id })
   }
 
-  getBooksFisicsById(id: number): Observable<Book> {
-    return this.httpApi.get<Book>("/fisico", { 'id': id })
-  }
-
   postBookFisic(body: any): Observable<any> {
     return this.httpApi.post("/fisico", body)
   }
+
+  public bookType: string = "";
 
 
 

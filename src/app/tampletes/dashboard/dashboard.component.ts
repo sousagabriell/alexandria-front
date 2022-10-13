@@ -48,12 +48,4 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  getBookByName(name: string) {
-    this.bookShelf$.pipe(
-      switchMap(bookShelf => {
-        return bookShelf.filter(book => book.titulo?.includes(name))
-      })
-    ).subscribe();
-  }
-
 }
