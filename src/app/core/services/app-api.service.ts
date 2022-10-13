@@ -26,16 +26,22 @@ export class AppApiService {
     return this.httpApi.get<Book[]>("/teses");
   }
 
-  getBookKindleById(id: number): Observable<Book> {
-    return this.httpApi.get<Book>("/kindle", { 'id': id })
+  postBookKindle(body: any): Observable<any> {
+    return this.httpApi.post("/kindle", body)
   }
 
   postBookFisic(body: any): Observable<any> {
     return this.httpApi.post("/fisico", body)
   }
 
+  postPdf(body: any): Observable<any> {
+    return this.httpApi.post("/pdf", body)
+  }
+
+  postTeses(body: any): Observable<any> {
+    return this.httpApi.post("/teses", body)
+  }
+
   public bookType: string = "";
-
-
 
 }

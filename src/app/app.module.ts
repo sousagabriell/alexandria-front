@@ -16,6 +16,7 @@ import { AppEffects } from './core/store/app.effects';
 import { ExcelComponent } from './tampletes/excel/excel.component';
 import { TipoLivroComponent } from './tampletes/adicionar-livro/tipo-livro/tipo-livro.component';
 import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-livro/preencher-livro.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-l
     ExcelComponent,
     TipoLivroComponent,
     PreencherLivroComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     SidebarModule.forRoot(),
@@ -44,7 +45,8 @@ import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-l
       maxAge: 25,
       logOnly: false
     }),
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

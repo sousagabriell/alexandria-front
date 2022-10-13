@@ -14,7 +14,7 @@ import { selectBookShelfFisic, selectBookShelfKindle, selectBookShelfPdf, select
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private appApi: AppApiService, private storeApp: Store<{ app: BookState }>) { }
+  constructor( private storeApp: Store<{ app: BookState }>) { }
 
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(select(selectBookShelfKindle));
   bookById$!: Observable<Book>;
