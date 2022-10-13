@@ -1,43 +1,101 @@
 <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9 position">
-    <form action="" method="post" #frm="ngForm" (ngSubmit)="postBook(frm)">
-      <input id="titulo" name="titulo" type="text" placeholder="titulo" [(ngModel)]="post.titulo" />
-      <input id="subtitulo" name="subtitulo" type="text" placeholder="subtitulo" [(ngModel)]="post.subtitulo" />
-      <input id="autor" name="autor" type="text" placeholder="autor" [(ngModel)]="post.autor" />
-      <input id="foto" name="foto" type="text" placeholder="link foto" [(ngModel)]="post.foto" />
-      <input id="ano" name="ano" type="text" placeholder="ano" [(ngModel)]="post.ano" />
-      <input id="genero" name="genero" type="text" placeholder="genero" [(ngModel)]="post.genero" />
-      <input id="subgenero" name="subgenero" type="text" placeholder="subgenero" [(ngModel)]="post.subgenero" />
-      <input id="idioma" name="idioma" type="text" placeholder="idioma" [(ngModel)]="post.idioma" />
-      <input id="cidade" name="cidade" type="text" placeholder="cidade" [(ngModel)]="post.cidade" />
-      <input id="nacional" name="nacional" type="text" placeholder="livro nacional?" [(ngModel)]="post.nacional" />
-      <input id="lido" name="lido" type="text" placeholder="Já li?" [(ngModel)]="post.lido" />
+    <div class="col-md-3"></div>
+    <div class="col-md-5 position">
+        <h2 class="my-4">ADIOCIONAR LIVRO KINDLE</h2>
+        <hr>
+        <span>Preencher todos os campos obrigatórios*</span>
+        <form action="" method="post" #frm="ngForm" (ngSubmit)="postBook(frm)" class="mt-4">
+            <div>
+                <input id="titulo" name="titulo" type="text" placeholder="titulo" class="w-100"
+                    [(ngModel)]="post$.titulo" class="w-100 form-control" />
+            </div>
+            <div class="mt-3">
+                <input id="subtitulo" name="subtitulo" type="text" placeholder="subtitulo" [(ngModel)]="post$.subtitulo"
+                    class="w-100 form-control" />
+            </div>
+            <div class="mt-3">
+                <input id="autor" name="autor" type="text" placeholder="autor" [(ngModel)]="post$.autor"
+                    class="w-100 form-control" />
+            </div>
+            <div class="mt-3">
+                <input id="foto" name="foto" type="text" placeholder="link foto" [(ngModel)]="post$.foto"
+                    class="w-100 form-control" />
+            </div>
+            <div class="d-flex w-100 mt-3">
+                <input id="ano" name="ano" type="text" placeholder="ano" class="w-100 form-control me-3"
+                    [(ngModel)]="post$.ano" />
+                <input id="genero" name="genero" type="text" placeholder="genero" class="w-100 form-control me-3"
+                    [(ngModel)]="post$.genero" />
+                <input id="subgenero" name="subgenero" type="text" placeholder="subgenero" class="w-100 form-control"
+                    [(ngModel)]="post$.subgenero" />
+            </div>
+            <div class="d-flex w-100 mt-3">
+                <input id="idioma" name="idioma" type="text" placeholder="idioma" [(ngModel)]="post$.idioma"
+                    class="w-100 form-control me-3" />
+                <input id="cidade" name="cidade" type="text" placeholder="cidade" [(ngModel)]="post$.cidade"
+                    class="w-100 form-control " />
+            </div>
+
+            <div class="d-flex w-100 mt-3">
+                <input id="lido" name="lido" type="text" placeholder="Já li?" [(ngModel)]="post$.lido"
+                    class="w-100 form-control me-3" />
+                <input id="nacional" name="nacional" type="text" placeholder="livro nacional?"
+                    [(ngModel)]="post$.nacional" class="w-100 form-control" />
+            </div>
 
 
-      <div *ngIf="this.appApiService.bookType != 'teses'">
-        <input id="edicao" name="edicao" type="text" placeholder="edicao" [(ngModel)]="post.edicao" />
-        <input id="editora" name="editora" type="text" placeholder="editora" [(ngModel)]="post.editora" />
-      </div>
 
-      <div *ngIf="this.appApiService.bookType == 'kindle' || 'pdf' ">
-        <input id="fisico" name="fisico" type="text" placeholder="tenho fisico?" [(ngModel)]="post.fisico" />
-      </div>
 
-      <div *ngIf="this.appApiService.bookType == 'pdf' ||  'teses'">
-        <input id="pasta" name="pasta" type="text" placeholder="pasta" [(ngModel)]="post.pasta" />
-      </div>
+            <div *ngIf="this.appApiService.bookType != 'teses'">
+                <div class="d-flex w-100 mt-3">
+                    <input id="edicao" name="edicao" type="text" placeholder="edicao" class="w-100 form-control me-3"
+                        [(ngModel)]="post$.edicao" />
+                    <input id="editora" name="editora" type="text" placeholder="editora" class="w-100 form-control"
+                        [(ngModel)]="post$.editora" />
+                </div>
+            </div>
 
-      <div *ngIf="this.appApiService.bookType == 'pdf'">
-        <input id="kindle" name="kindle" type="text" placeholder="tenho kindle?" [(ngModel)]="post.kindle" />
-      </div>
+            <div *ngIf="this.appApiService.bookType == 'kindle' || 'pdf' ">
+                <div class="d-flex w-100 mt-3">
+                    <input id="fisico" name="fisico" type="text" placeholder="tenho fisico?" class="w-100 form-control"
+                        [(ngModel)]="post$.fisico" />
+                </div>
+            </div>
 
-      <div *ngIf="this.appApiService.bookType == 'teses'">
-        <input id="instituicao" name="instituicao" type="text" placeholder="instituição" [(ngModel)]="post.instituicao" />
-        <input id="tipo" name="tipo" type="text" placeholder="tipo" [(ngModel)]="post.tipo" />
-      </div>
+            <div *ngIf="this.appApiService.bookType == 'pdf' || 'teses'">
+                <div class="d-flex w-100 mt-3">
+                    <input id="pasta" name="pasta" type="text" placeholder="pasta" class="w-100 form-control"
+                        [(ngModel)]="post$.pasta" />
+                </div>
+            </div>
 
-      <button type="submit" [disabled]="frm.invalid" >salvar</button>
-    </form>
-  </div>
+            <div *ngIf="this.appApiService.bookType == 'pdf'">
+                <input id="kindle" name="kindle" type="text" placeholder="tenho kindle?" class="w-100 form-control mt-3"
+                    [(ngModel)]="post$.kindle" />
+            </div>
+
+            <div *ngIf="this.appApiService.bookType == 'teses'">
+                <div class="mt-3">
+                    <input id="instituicao" name="instituicao" type="text" class="w-100 form-control "
+                        placeholder="instituição" [(ngModel)]="post$.instituicao" />
+                </div>
+                <div class="mt-3">
+                    <input id="tipo" name="tipo" type="text" placeholder="tipo" class="w-100 form-control"
+                        [(ngModel)]="post$.tipo"/>
+                </div>
+            </div>
+            <div class="d-flex w-100 justify-content-between mt-3">
+                <button type="submit" [disabled]="frm.invalid" class="btn btn-outline-secondary w-25"
+                    [routerLink]="['/adicionar-livro']">Voltar</button>
+                <button type="submit" [disabled]="frm.invalid" class="btn btn-primario w-25">Cadastrar Livro</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <div class="livro d-flex align-items-center p-5" *ngIf="this.post$">
+            <div class="livro-capa">
+                <p>{{post$.titulo}}</p>
+        </div>
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalAbstractsService } from 'src/app/abstracts/global-abstracts.service';
+import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 
 @Component({
   selector: 'app-login',

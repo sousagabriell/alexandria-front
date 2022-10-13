@@ -29,12 +29,9 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     ExcelComponent,
     TipoLivroComponent,
-
     PreencherLivroComponent,
     CadastroComponent
   ],
-
-
   imports: [
     BrowserModule,
     SidebarModule.forRoot(),

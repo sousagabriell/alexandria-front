@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';
@@ -11,18 +12,22 @@ import { getBookShelfKindle, getBookShelfPdf, getBookShelfFisic, getBookShelfTes
   styleUrls: ['./preencher-livro.component.scss'],
 })
 export class PreencherLivroComponent implements OnInit {
-  post: any;
+  post$: any;
 
-  constructor(public appApiService: AppApiService, private storeApp: Store<{ app: BookState }>) {}
+  constructor(
+    public appApiService: AppApiService,
+     private storeApp: Store<{ app: BookState }>,
+     private router:Router
+     ) {}
 
   ngOnInit(): void {
-    this.post = {};
+    this.post$ = {};
   }
-  
+
   postBook(frm: NgForm) {
     switch (this.appApiService.bookType) {
       case 'kindle':
-        this.appApiService.postBookKindle(this.post).subscribe((response) => {
+        this.appApiService.postBookKindle(this.post$).subscribe((response) => {
           console.log("------------------------- Kidle")
           console.log(response)
           this.storeApp.dispatch(getBookShelfKindle());
@@ -30,7 +35,7 @@ export class PreencherLivroComponent implements OnInit {
         });
         break;
       case 'pdf':
-        this.appApiService.postPdf(this.post).subscribe((response) => {
+        this.appApiService.postPdf(this.post$).subscribe((response) => {
           console.log("------------------------- Pdf")
           console.log(response);  
           this.storeApp.dispatch(getBookShelfPdf());
@@ -38,7 +43,7 @@ export class PreencherLivroComponent implements OnInit {
         });
         break;
       case 'fisico':
-        this.appApiService.postBookFisic(this.post).subscribe((response) => {
+        this.appApiService.postBookFisic(this.post$).subscribe((response) => {
           console.log("------------------------- Fisico")
           console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
@@ -46,14 +51,14 @@ export class PreencherLivroComponent implements OnInit {
         });
         break;
       case 'teses':
-        this.appApiService.postTeses(this.post).subscribe((response) => {
+        this.appApiService.postTeses(this.post$).subscribe((response) => {
           console.log("------------------------- Teses")
           console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
-
           frm.reset();
         });
         break;
     }
+    this.router.navigate(['/dashboard'])
   }
 }
