@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-livro/preencher-livro.component';
 import { TipoLivroComponent } from './tampletes/adicionar-livro/tipo-livro/tipo-livro.component';
+import { CadastroComponent } from './tampletes/cadastro/cadastro.component';
 import { DashboardComponent } from './tampletes/dashboard/dashboard.component';
 import { ExcelComponent } from './tampletes/excel/excel.component';
 import { LoginComponent } from './tampletes/login/login.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'excel', component: ExcelComponent },
   { path: 'adicionar-livro', component: TipoLivroComponent },
-  { path: 'preencher-livro', component: PreencherLivroComponent }
+  { path: 'preencher-livro', component: PreencherLivroComponent },
+  { path: 'cadastro', component: CadastroComponent }
 ];
 
 @NgModule({
