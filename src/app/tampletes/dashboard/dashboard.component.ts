@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
      private storeApp: Store<{ app: BookState }>,
      private globalAbstractsService: GlobalAbstractsService) { }
 
+
+
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(select(selectBookShelfKindle));
   bookById$!: Observable<Book>;
 

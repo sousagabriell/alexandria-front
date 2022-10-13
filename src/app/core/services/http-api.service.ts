@@ -59,7 +59,7 @@ export class HttpApiService {
     return new Observable((observer) => {
       this.http
         .post<payloadT>(
-          `${environment.baseUrl}/${endPointUrl}`,
+          `${environment.baseUrl}${endPointUrl}`,
           payload
         )
         .pipe(catchError((error) =>
