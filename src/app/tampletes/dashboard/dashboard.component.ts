@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { filter, map, Observable, switchMap } from 'rxjs';
+import { GlobalAbstractsService } from 'src/app/abstracts/global-abstracts.service';
 import { Book } from 'src/app/core/interfaces/book';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';
@@ -14,13 +15,19 @@ import { selectBookShelfFisic, selectBookShelfKindle, selectBookShelfPdf, select
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private storeApp: Store<{ app: BookState }>) { }
+  constructor(
+     private appApi: AppApiService,
+     private storeApp: Store<{ app: BookState }>,
+     private globalAbstractsService: GlobalAbstractsService) { }
+
+
 
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(select(selectBookShelfKindle));
   bookById$!: Observable<Book>;
 
   ngOnInit(): void {
     this.getBookById(1);
+
   }
 
   getBookKindle() {

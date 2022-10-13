@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { GlobalAbstractsService } from './abstracts/global-abstracts.service';
 import { BookState } from './core/store';
 import { getBookShelfKindle, getBookShelfFisic, getBookShelfPdf, getBookShelfTeses } from './core/store/app.actions';
 
@@ -16,9 +18,13 @@ export class AppComponent implements OnInit {
 
   subscription = new Subscription();
 
-  constructor( private storeApp: Store<{app: BookState}>) { }
+  constructor( 
+   private storeApp: Store<{app: BookState}>,
+   public globalAbstractService: GlobalAbstractsService,
+   private router: Router) { 
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.storeApp.dispatch(getBookShelfKindle());
     this.storeApp.dispatch(getBookShelfFisic());
     this.storeApp.dispatch(getBookShelfPdf());

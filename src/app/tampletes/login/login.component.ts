@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalAbstractsService } from 'src/app/abstracts/global-abstracts.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    public globalAbstractService: GlobalAbstractsService
+  ) { 
+  }
+
+  ngOnInit(
+  ): void {
+  }
+  goToDashboard(){
+    this.router.navigate(['/dashboard']);
+    this.globalAbstractService.noSidebar=true
   }
 
 }
