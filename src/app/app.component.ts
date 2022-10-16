@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { GlobalAbstractsService } from './core/abstracts/global-abstracts.service';
+import { GlobalAbstractsService } from './shared/abstracts/global-abstracts.service';
 import { BookState } from './core/store';
 import { getBookShelfKindle, getBookShelfFisic, getBookShelfPdf, getBookShelfTeses } from './core/store/app.actions';
 

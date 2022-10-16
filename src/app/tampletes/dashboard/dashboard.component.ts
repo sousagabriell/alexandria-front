@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { filter, map, Observable, switchMap } from 'rxjs';
-import { GlobalAbstractsService } from 'src/app/core/abstracts/global-abstracts.service';
+import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 import { Book } from 'src/app/core/interfaces/book';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';

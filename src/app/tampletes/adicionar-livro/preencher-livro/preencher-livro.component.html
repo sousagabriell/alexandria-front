@@ -95,10 +95,10 @@
         <div class="livro d-flex align-items-center p-5" *ngIf="this.post$">
             <div class="gradiente-foto"></div>
             <div class="livro-capa">
-                <div class="info-livro text-center">
-                    <p>{{post$.titulo}}</p>
-                    <p>{{post$.subtitulo}}</p>
-                    <p>{{post$.autor}}</p>
+                <div class="info-livro">
+                    <h3>{{post$.titulo}}</h3>
+                    <h5>{{post$.subtitulo}}</h5>
+                    <span>{{post$.autor}}</span>
                 </div>
                 <div class="foto">
                     <img src="{{post$.foto}}" alt="" class="foto">

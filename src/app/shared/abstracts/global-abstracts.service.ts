@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class GlobalAbstractsService {
 
-  public noSidebar:boolean=true
+  public noSidebar:boolean=false
 
   constructor(
     private router: Router

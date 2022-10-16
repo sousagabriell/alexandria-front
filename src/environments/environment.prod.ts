@@ -1,3 +1,4 @@
-export const environment = {
-  production: true
+export const environments = {
+  production: true,
+  token: ''
 };
