@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
@@ -7,6 +8,10 @@ import { HttpApiService } from './http-api.service';
 })
 export class AppApiService {
   constructor(private httpApi: HttpApiService) { }
+
+
+
+
   getBooksKindle(): Observable<Book[]> {
     return this.httpApi.get<Book[]>("/kindle");
   }

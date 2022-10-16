@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 
 import { catchError, shareReplay } from 'rxjs/operators';
 
 import * as queryString from 'query-string';
-
+import { environments } from 'src/environments/environment.prod';
 import { environment } from 'src/environments/environment';
 import { Store } from '@ngrx/store';
 import { generalError } from '../store/app.actions';
@@ -19,6 +19,7 @@ export class HttpApiService {
   constructor(private http: HttpClient, private storeApp: Store<{ app: any }>) { }
 
   get<payloadT>(endPointUrl: string, payload?: any): Observable<payloadT> {
+    const token = { headers: new HttpHeaders().set('Authorization', environments.token) }
     const params = payload
       ? new HttpParams({
         fromString: queryString.stringify(payload, { skipNull: true }),
@@ -27,7 +28,7 @@ export class HttpApiService {
 
     return new Observable((observer) => {
       this.http
-        .get<payloadT>(environment.baseUrl + endPointUrl, {
+        .get<payloadT>(environment.baseUrl + endPointUrl + token, {
           params
         })
         .pipe(shareReplay(), catchError((error) => this.handleError(error)))
