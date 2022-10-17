@@ -21,7 +21,7 @@ export class AuthenticationServiceService {
     userLogin.usuario=username
     userLogin.senha=password
     
-    return this.httpApi.postApiByHttpClient("http://localhost:8080/usuarios/logar",userLogin).pipe(
+    return this.httpApi.postApiByHttpClient("/usuarios/logar",userLogin).pipe(
      map(
        userData => {
         sessionStorage.setItem('username',username);

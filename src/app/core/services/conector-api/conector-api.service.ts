@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HeaderList } from '../../interfaces/header-list.interface';
 import { HttpOptions } from '../../interfaces/http-options.interface';
 import { ObjectLiteral } from '../../interfaces/object-literal.interface';
@@ -14,6 +15,8 @@ import { ConectorApiHelper } from './conector-api.helper';
 export class ConectorApiService {
   constructor(private httpClient: HttpClient) {}
 
+  baseUrl=environment.baseUrl;
+
   public getApiByHttpClient(
     url: string,
     headers?: Array<HeaderList>,
@@ -23,7 +26,7 @@ export class ConectorApiService {
     if(headers) ConectorApiHelper.setHttpOptionHeader(httpOptions, headers);
     if(parameters) ConectorApiHelper.setHttpOptionParameter(httpOptions, parameters);
     return this.httpClient
-      .get<any>(url, httpOptions)
+      .get<any>(this.baseUrl + url, httpOptions)
       .pipe(catchError(this.hendleError));
   }
 
@@ -38,7 +41,7 @@ export class ConectorApiService {
     if(headers) ConectorApiHelper.setHttpOptionHeader(httpOptions, headers);
     if(parameters) ConectorApiHelper.setHttpOptionParameter(httpOptions, parameters);
     return this.httpClient
-      .post<any>(url, request, httpOptions)
+      .post<any>(this.baseUrl + url, request, httpOptions)
       .pipe(catchError(this.hendleError));
   }
 
