@@ -19,7 +19,11 @@ export class HttpApiService {
   constructor(private http: HttpClient, private storeApp: Store<{ app: any }>) { }
 
   get<payloadT>(endPointUrl: string, payload?: any): Observable<payloadT> {
-    const token = { headers: new HttpHeaders().set('Authorization', environments.token) }
+    let username = sessionStorage.getItem('username')
+    let password = sessionStorage.getItem('password')
+    const headers = new HttpHeaders({
+        Authorization: 'Basic ' + btoa(username + ':' + password)})
+        
     const params = payload
       ? new HttpParams({
         fromString: queryString.stringify(payload, { skipNull: true }),
@@ -28,8 +32,8 @@ export class HttpApiService {
 
     return new Observable((observer) => {
       this.http
-        .get<payloadT>(environment.baseUrl + endPointUrl + token, {
-          params
+        .get<payloadT>(environment.baseUrl + endPointUrl,{
+          headers
         })
         .pipe(shareReplay(), catchError((error) => this.handleError(error)))
         .subscribe((res: any) => {
@@ -40,11 +44,15 @@ export class HttpApiService {
   }
 
   put<payloadT>(endPointUrl: string, payload: any): Observable<any> {
+    let username = sessionStorage.getItem('username')
+    let password = sessionStorage.getItem('password')
+    const headers = new HttpHeaders({
+        Authorization: 'Basic ' + btoa(username + ':' + password)})
     return new Observable((observer) => {
       this.http
         .put<payloadT>(
           `${environment.baseUrl}/${endPointUrl}`,
-          payload,
+          payload, {headers}
         )
         .pipe(shareReplay(), catchError((error) =>
           this.handleError(error)
@@ -57,11 +65,15 @@ export class HttpApiService {
   }
 
   post<payloadT>(endPointUrl: string, payload: any): Observable<any> {
+    let username = sessionStorage.getItem('username')
+    let password = sessionStorage.getItem('password')
+    const headers = new HttpHeaders({
+        Authorization: 'Basic ' + btoa(username + ':' + password)})
     return new Observable((observer) => {
       this.http
         .post<payloadT>(
           `${environment.baseUrl}${endPointUrl}`,
-          payload
+          payload, {headers}
         )
         .pipe(catchError((error) =>
           this.handleError(error)

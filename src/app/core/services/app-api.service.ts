@@ -9,9 +9,6 @@ import { HttpApiService } from './http-api.service';
 export class AppApiService {
   constructor(private httpApi: HttpApiService) { }
 
-
-
-
   getBooksKindle(): Observable<Book[]> {
     return this.httpApi.get<Book[]>("/kindle");
   }

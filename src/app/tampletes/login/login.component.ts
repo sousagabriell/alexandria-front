@@ -39,9 +39,7 @@ export class LoginComponent implements OnInit {
         // console.log(this.username + "---------" +this.password)
         this.router.navigate(['/dashboard'])
         this.globalAbstractService.noSidebar=true
-        environments.token = this.userLogin.token
-        this.invalidLogin = false
-        console.log(this.userLogin.usuario + "---------------------aqui")
+        
       },
       error => {
         this.invalidLogin = true
