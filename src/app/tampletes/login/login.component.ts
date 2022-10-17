@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/core/services/authentication-service.service';
 import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 import { environments } from 'src/environments/environment.prod';
-import { UserLogin } from 'src/app/core/interfaces/usersLogin';
+import { UserLogin } from 'src/app/core/interfaces/userLogin';
 
 
 @Component({
@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
       data => {
         // console.log(this.username + "---------" +this.password)
         this.router.navigate(['/dashboard'])
-        this.globalAbstractService.noSidebar=true
-        
+        this.globalAbstractService.noSidebar=true;
       },
       error => {
         this.invalidLogin = true

@@ -13,9 +13,13 @@ export class SidebarComponent implements OnInit {
     this.opened = !this.opened;
   }
 
+  nameUser = sessionStorage.getItem('name')
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.nameUser+"=========")
+
   }
 
 }

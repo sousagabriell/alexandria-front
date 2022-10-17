@@ -12,6 +12,9 @@ export class AppApiService {
   getBooksKindle(): Observable<Book[]> {
     return this.httpApi.get<Book[]>("/kindle");
   }
+  getBooksKindleByTitle(title: string): Observable<Book[]>{
+    return this.httpApi.get<Book[]>(`/title/${title}`)
+  }
   getBooksFisics(): Observable<Book[]> {
     return this.httpApi.get<Book[]>("/fisico");
   }
