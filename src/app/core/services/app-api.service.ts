@@ -1,46 +1,60 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
-import { HttpApiService } from './http-api.service';
+import { HeaderList } from '../interfaces/header-list.interface';
+import { ConectorApiService } from './conector-api/conector-api.service';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppApiService {
-  constructor(private httpApi: HttpApiService) { }
+
+  header = new Array<HeaderList>();
+
+  autenticator: HeaderList = {
+    value: 'Basic ' + btoa(sessionStorage.getItem('username') + ':' + sessionStorage.getItem('password')),
+    label: 'Authorization',
+  };
+
+  constructor(private httpApi: ConectorApiService) {
+    this.header.push(this.autenticator);
+  }
 
   getBooksKindle(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/kindle");
+    return this.httpApi.getApiByHttpClient('/kindle', this.header);
   }
-  getBooksKindleByTitle(title: string): Observable<Book[]>{
-    return this.httpApi.get<Book[]>(`/title/${title}`)
+
+  getBooksKindleByTitle(title: string): Observable<Book[]> {
+    return this.httpApi.getApiByHttpClient(`/title/${title}`, this.header);
   }
+
   getBooksFisics(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/fisico");
+    return this.httpApi.getApiByHttpClient('/fisico', this.header);
   }
+
   getPdf(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/pdf");
+    return this.httpApi.getApiByHttpClient('/pdf', this.header);
   }
+  
   getTeses(): Observable<Book[]> {
-    return this.httpApi.get<Book[]>("/teses");
+    return this.httpApi.getApiByHttpClient('/teses', this.header);
   }
 
   postBookKindle(body: any): Observable<any> {
-    return this.httpApi.post("/kindle", body)
+    return this.httpApi.postApiByHttpClient('/kindle', body);
   }
 
   postBookFisic(body: any): Observable<any> {
-    return this.httpApi.post("/fisico", body)
+    return this.httpApi.postApiByHttpClient('/fisico', body);
   }
 
   postPdf(body: any): Observable<any> {
-    return this.httpApi.post("/pdf", body)
+    return this.httpApi.postApiByHttpClient('/pdf', body);
   }
 
   postTeses(body: any): Observable<any> {
-    return this.httpApi.post("/teses", body)
+    return this.httpApi.postApiByHttpClient('/teses', body);
   }
 
-  public bookType: string = "";
-  
+  public bookType: string = '';
 }
