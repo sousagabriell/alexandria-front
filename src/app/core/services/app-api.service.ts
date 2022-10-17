@@ -8,25 +8,27 @@ import { ConectorApiService } from './conector-api/conector-api.service';
   providedIn: 'root',
 })
 export class AppApiService {
-
   header = new Array<HeaderList>();
-  username = sessionStorage.getItem('username')
-  password = sessionStorage.getItem('password')
+  username = sessionStorage.getItem('username');
+  password = sessionStorage.getItem('password');
   autenticator: HeaderList = {
     value: 'Basic ' + btoa(this.username + ':' + this.password),
-    label: 'Authorization'
+    label: 'Authorization',
   };
 
   constructor(private httpApi: ConectorApiService) {
     this.header.push(this.autenticator);
   }
 
-  getBooksKindle(): Observable<Book[]> {
-    return this.httpApi.getApiByHttpClient('/kindle', this.header);
+  getBooksKindleByTitle(title: string): Observable<Book[]> {
+    return this.httpApi.getApiByHttpClient(
+      `/kindle/title/${title}`,
+      this.header
+    );
   }
 
-  getBooksKindleByTitle(title: string): Observable<Book[]> {
-    return this.httpApi.getApiByHttpClient(`/title/${title}`, this.header);
+  getBooksKindle(): Observable<Book[]> {
+    return this.httpApi.getApiByHttpClient('/kindle', this.header);
   }
 
   getBooksFisics(): Observable<Book[]> {
@@ -36,25 +38,57 @@ export class AppApiService {
   getPdf(): Observable<Book[]> {
     return this.httpApi.getApiByHttpClient('/pdf', this.header);
   }
-  
+
   getTeses(): Observable<Book[]> {
     return this.httpApi.getApiByHttpClient('/teses', this.header);
   }
 
   postBookKindle(body: any): Observable<any> {
-    return this.httpApi.postApiByHttpClient('/kindle', body);
+    return this.httpApi.postApiByHttpClient('/kindle', body, this.header);
   }
 
   postBookFisic(body: any): Observable<any> {
-    return this.httpApi.postApiByHttpClient('/fisico', body);
+    return this.httpApi.postApiByHttpClient('/fisico', body, this.header);
   }
 
   postPdf(body: any): Observable<any> {
-    return this.httpApi.postApiByHttpClient('/pdf', body);
+    return this.httpApi.postApiByHttpClient('/pdf', body, this.header);
   }
 
   postTeses(body: any): Observable<any> {
-    return this.httpApi.postApiByHttpClient('/teses', body);
+    return this.httpApi.postApiByHttpClient('/teses', body, this.header);
+  }
+
+  putBookKindle(body: any): Observable<any> {
+    return this.httpApi.putApiByHttpClient('/kindle', body, this.header);
+  }
+
+  putBookFisic(body: any): Observable<any> {
+    return this.httpApi.putApiByHttpClient('/fisico', body, this.header);
+  }
+
+  putPdf(body: any): Observable<any> {
+    return this.httpApi.putApiByHttpClient('/pdf', body, this.header);
+  }
+
+  putTeses(body: any): Observable<any> {
+    return this.httpApi.putApiByHttpClient('/teses', body, this.header);
+  }
+
+  deleteBookKindle(id: number): Observable<Book[]> {
+    return this.httpApi.deleteApiByHttpClient(`/kindle/${id}`, this.header);
+  }
+
+  deleteBookFisic(id: number): Observable<Book[]> {
+    return this.httpApi.deleteApiByHttpClient(`/fisico/${id}`, this.header);
+  }
+
+  deletePdf(id: number): Observable<Book[]> {
+    return this.httpApi.deleteApiByHttpClient(`/pdf/${id}`, this.header);
+  }
+
+  deleteTese(id: number): Observable<Book[]> {
+    return this.httpApi.deleteApiByHttpClient(`/teses/${id}`, this.header);
   }
 
   public bookType: string = '';
