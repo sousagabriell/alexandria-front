@@ -45,6 +45,34 @@ export class ConectorApiService {
       .pipe(catchError(this.hendleError));
   }
 
+  public putApiByHttpClient(
+    url: string,
+    body: ObjectLiteral,
+    headers?: Array<HeaderList>,
+    parameters?: Array<ParametersList>
+  ): Observable<any> {
+    let httpOptions: HttpOptions = {};
+    let request: ObjectLiteral = ConectorApiHelper.setHttpRequest(body);
+    if(headers) ConectorApiHelper.setHttpOptionHeader(httpOptions, headers);
+    if(parameters) ConectorApiHelper.setHttpOptionParameter(httpOptions, parameters);
+    return this.httpClient
+      .put<any>(this.baseUrl + url, request, httpOptions)
+      .pipe(catchError(this.hendleError));
+  }
+
+  public deleteApiByHttpClient(
+    url: string,
+    headers?: Array<HeaderList>,
+    parameters?: Array<ParametersList>
+  ): Observable<any> {
+    let httpOptions: HttpOptions = {};
+    if(headers) ConectorApiHelper.setHttpOptionHeader(httpOptions, headers);
+    if(parameters) ConectorApiHelper.setHttpOptionParameter(httpOptions, parameters);
+    return this.httpClient
+      .delete<any>(this.baseUrl + url, httpOptions)
+      .pipe(catchError(this.hendleError));
+  }
+
   private hendleError(error: HttpErrorResponse): Observable<never> {
     if (error.status === 0) {
       return throwError(() =>
