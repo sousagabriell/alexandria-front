@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBookById(1);
-
   }
 
   getBookKindle() {
@@ -42,7 +41,6 @@ export class DashboardComponent implements OnInit {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfTeses));
   }
 
-
   getBookById(id: number) {
     this.bookById$ = this.bookShelf$.pipe(
       switchMap(bookShelf => {
@@ -50,5 +48,4 @@ export class DashboardComponent implements OnInit {
       })
     )
   }
-
 }

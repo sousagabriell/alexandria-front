@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Users } from '../interfaces/user';
-import { UserLogin} from '../interfaces/usersLogin';
+import { UserLogin} from '../interfaces/userLogin';
 import { HttpApiService } from './http-api.service';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class AuthenticationServiceService {
   postNewUser(body: any) : Observable<any>{
     return this.httpApi.post("/usuarios/cadastrar", body)
   }
-  authenticate(username: string, password: string) {
+  authenticate(username: string, password: string,) {
     const userLogin: UserLogin = new UserLogin();
     userLogin.usuario=username
     userLogin.senha=password
