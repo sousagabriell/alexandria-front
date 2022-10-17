@@ -27,6 +27,7 @@ export class AuthenticationServiceService {
      map(
        userData => {
         sessionStorage.setItem('username',username);
+        sessionStorage.setItem('password',password);
         return userData;
        }
      )

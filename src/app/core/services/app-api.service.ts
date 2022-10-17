@@ -8,7 +8,11 @@ import { ConectorApiService } from './conector-api/conector-api.service';
   providedIn: 'root'
 })
 export class AppApiService {
+<<<<<<< HEAD
   constructor(private httpApi: ConectorApiService) { }
+=======
+  constructor(private httpApi: HttpApiService) { }
+>>>>>>> f94cf72 (fix: cadastro e login)
 
   getBooksKindle(): Observable<Book[]> {
     return this.httpApi.getApiByHttpClient("/kindle");
