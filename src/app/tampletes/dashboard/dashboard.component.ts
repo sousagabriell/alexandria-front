@@ -5,7 +5,7 @@ import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstract
 import { Book } from 'src/app/core/interfaces/book';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';
-import { getBookShelfFisic } from 'src/app/core/store/app.actions';
+import { getBookShelfFisic, getBookShelfKindle } from 'src/app/core/store/app.actions';
 import {
   selectBookShelfFisic,
   selectBookShelfKindle,
@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
     switch (tipe) {
       case 'kindle':
         this.appService.deleteBookKindle(id);
+        this.storeApp.dispatch(getBookShelfKindle());
         break;
       case 'fisico':
         this.appService.deleteBookFisic(id);
