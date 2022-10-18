@@ -49,8 +49,19 @@
               <div class="card-body W-100">
                 <div class="d-flex justify-content-between">
                   <p class="read">{{book.lido}}</p>
-                  <img src="../../../assets/icons/more.png" alt="" height="35px">
-
+                  <img src="../../../assets/icons/more.png" alt="" height="35px" data-bs-toggle="modal" data-bs-target="#optionsModal">
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown button
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item active" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                  </ul>
                 </div>
                 <div class="d-flex justify-content-between">
                   <h6 class="card-title mt-2">{{book.titulo}}</h6>
@@ -59,7 +70,7 @@
                 <p class="card-text">{{book.autor}}</p>
                 <a (click)="getBookById(book.id)" class="btn btn-primario w-100">Ver mais</a>
                 <a (click)="deleteBookById(book.id, book.tipo_livro)" class="btn btn-primario mt-3 w-100"> Excluir </a>
-                <a (click)="getBookById(book.id)" class="btn btn-primario mt-3 w-100"> Editar </a>
+                <a class="btn btn-primario mt-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setPutByBookId(book.id)"> Editar </a>
               </div>
             </div>
           </div>
@@ -106,6 +117,103 @@
           <h6 class="text-white text-center">Nacional ?</h6>
           <p class="text-white text-center">{{book.nacional}}</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" *ngIf="put$ as book" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" #frm="ngForm" (ngSubmit)="putBook(frm, book.tipo_livro)" class="mt-4">
+          <div>
+              <input id="titulo" name="titulo" type="text" placeholder="titulo" class="w-100"
+                  [(ngModel)]="book.titulo" class="w-100 form-control" />
+          </div>
+          <div class="mt-3">
+              <input id="subtitulo" name="subtitulo" type="text" placeholder="subtitulo" [(ngModel)]="book.subtitulo"
+                  class="w-100 form-control" />
+          </div>
+          <div class="mt-3">
+              <input id="autor" name="autor" type="text" placeholder="autor" [(ngModel)]="book.autor"
+                  class="w-100 form-control" />
+          </div>
+          <div class="mt-3">
+              <input id="foto" name="foto" type="text" placeholder="link foto" [(ngModel)]="book.foto"
+                  class="w-100 form-control" />
+          </div>
+          <div class="d-flex w-100 mt-3">
+              <input id="ano" name="ano" type="text" placeholder="ano" class="w-100 form-control me-3"
+                  [(ngModel)]="book.ano" />
+              <input id="genero" name="genero" type="text" placeholder="genero" class="w-100 form-control me-3"
+                  [(ngModel)]="book.genero" />
+              <input id="subgenero" name="subgenero" type="text" placeholder="subgenero" class="w-100 form-control"
+                  [(ngModel)]="book.subgenero" />
+          </div>
+          <div class="d-flex w-100 mt-3">
+              <input id="idioma" name="idioma" type="text" placeholder="idioma" [(ngModel)]="book.idioma"
+                  class="w-100 form-control me-3" />
+              <input id="cidade" name="cidade" type="text" placeholder="cidade" [(ngModel)]="book.cidade"
+                  class="w-100 form-control " />
+          </div>
+
+          <div class="d-flex w-100 mt-3">
+              <input id="lido" name="lido" type="text" placeholder="Já li?" [(ngModel)]="book.lido"
+                  class="w-100 form-control me-3" />
+              <input id="nacional" name="nacional" type="text" placeholder="livro nacional?"
+                  [(ngModel)]="book.nacional" class="w-100 form-control" />
+          </div>
+
+
+
+
+          <div *ngIf="book.tipo_livro != 'teses' ">
+              <div class="d-flex w-100 mt-3">
+                  <input id="edicao" name="edicao" type="text" placeholder="edicao" class="w-100 form-control me-3"
+                      [(ngModel)]="book.edicao" />
+                  <input id="editora" name="editora" type="text" placeholder="editora" class="w-100 form-control"
+                      [(ngModel)]="book.editora" />
+              </div>
+          </div>
+
+          <div *ngIf="book.tipo_livro == 'kindle' || 'pdf' ">
+              <div class="d-flex w-100 mt-3">
+                  <input id="fisico" name="fisico" type="text" placeholder="tenho fisico?" class="w-100 form-control"
+                      [(ngModel)]="book.fisico" />
+              </div>
+          </div>
+
+          <div *ngIf="book.tipo_livro == 'pdf' || 'teses'">
+              <div class="d-flex w-100 mt-3">
+                  <input id="pasta" name="pasta" type="text" placeholder="pasta" class="w-100 form-control"
+                      [(ngModel)]="book.pasta" />
+              </div>
+          </div>
+
+          <div *ngIf="book.tipo_livro == 'pdf'">
+              <input id="kindle" name="kindle" type="text" placeholder="tenho kindle?" class="w-100 form-control mt-3"
+                  [(ngModel)]="book.kindle" />
+          </div>
+
+          <div *ngIf="book.tipo_livro == 'teses'">
+              <div class="mt-3">
+                  <input id="instituicao" name="instituicao" type="text" class="w-100 form-control "
+                      placeholder="instituição" [(ngModel)]="book.instituicao" />
+              </div>
+              <div class="mt-3">
+                  <input id="tipo" name="tipo" type="text" placeholder="tipo" class="w-100 form-control"
+                      [(ngModel)]="book.tipo" />
+              </div>
+          </div>
+          <div class="d-flex w-100 justify-content-between mt-3">
+              <button type="submit" [disabled]="frm.invalid" class="btn btn-primario w-25">Cadastrar Livro</button>
+          </div>
+      </form>
       </div>
     </div>
   </div>
