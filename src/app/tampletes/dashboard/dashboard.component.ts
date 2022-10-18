@@ -53,8 +53,11 @@ export class DashboardComponent implements OnInit {
   deleteBookById(id: number, tipe: string) {
     switch (tipe) {
       case 'kindle':
-        this.appService.deleteBookKindle(id);
-        this.storeApp.dispatch(getBookShelfKindle());
+        this.appService.deleteBookKindle(id).subscribe((response) => {
+          console.log("------------------------- Kidle")
+          console.log(response)
+          this.storeApp.dispatch(getBookShelfKindle());
+        });
         break;
       case 'fisico':
         this.appService.deleteBookFisic(id);
