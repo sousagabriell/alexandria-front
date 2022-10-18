@@ -25,8 +25,8 @@
         <h6 class="my-4">Seus Livros</h6>
       </div>
       <div class="search-box">
-        <input #mySearch name ="filtro" type="text" class="search-text" placeholder="Pesquisar...">
-        <a class="search-btn" >
+        <input #mySearch name="filtro" type="text" class="search-text" placeholder="Pesquisar..." [(ngModel)]="filtro" id="filtro">
+        <a class="search-btn" (click)="getBookByTitulo(filtro)" >
           <img src="../../../assets/icons/search1.png" alt="" class="loupe-blue">
           <img src="../../../assets/icons/search.png" alt="" class="loupe-white">
         </a>
@@ -58,7 +58,7 @@
                 </div>
                 <p class="card-text">{{book.autor}}</p>
                 <a (click)="getBookById(book.id)" class="btn btn-primario w-100">Ver mais</a>
-                <a (click)="getBookById(book.id)" class="btn btn-primario mt-3 w-100"> Excluir </a>
+                <a (click)="deleteBookById(book.id, 'kindle')" class="btn btn-primario mt-3 w-100"> Excluir </a>
                 <a (click)="getBookById(book.id)" class="btn btn-primario mt-3 w-100"> Editar </a>
               </div>
             </div>
