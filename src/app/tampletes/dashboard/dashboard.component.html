@@ -58,7 +58,7 @@
                 </div>
                 <p class="card-text">{{book.autor}}</p>
                 <a (click)="getBookById(book.id)" class="btn btn-primario w-100">Ver mais</a>
-                <a (click)="deleteBookById(book.id, 'kindle')" class="btn btn-primario mt-3 w-100"> Excluir </a>
+                <a (click)="deleteBookById(book.id, book.tipo_livro)" class="btn btn-primario mt-3 w-100"> Excluir </a>
                 <a (click)="getBookById(book.id)" class="btn btn-primario mt-3 w-100"> Editar </a>
               </div>
             </div>
