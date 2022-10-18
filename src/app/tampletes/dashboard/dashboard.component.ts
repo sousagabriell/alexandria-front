@@ -5,7 +5,12 @@ import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstract
 import { Book } from 'src/app/core/interfaces/book';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';
-import { getBookShelfFisic, getBookShelfKindle } from 'src/app/core/store/app.actions';
+import {
+  getBookShelfFisic,
+  getBookShelfKindle,
+  getBookShelfPdf,
+  getBookShelfTeses,
+} from 'src/app/core/store/app.actions';
 import {
   selectBookShelfFisic,
   selectBookShelfKindle,
@@ -54,19 +59,31 @@ export class DashboardComponent implements OnInit {
     switch (tipe) {
       case 'kindle':
         this.appService.deleteBookKindle(id).subscribe((response) => {
-          console.log("------------------------- Kidle")
-          console.log(response)
+          console.log('------------------------- Kidle');
+          console.log(response);
           this.storeApp.dispatch(getBookShelfKindle());
         });
         break;
       case 'fisico':
-        this.appService.deleteBookFisic(id);
+        this.appService.deleteBookFisic(id).subscribe((response) => {
+          console.log('------------------------- Fisico');
+          console.log(response);
+          this.storeApp.dispatch(getBookShelfFisic());
+        });
         break;
       case 'pdf':
-        this.appService.deletePdf(id)
+        this.appService.deletePdf(id).subscribe((response) => {
+          console.log('------------------------- PDF');
+          console.log(response);
+          this.storeApp.dispatch(getBookShelfPdf());
+        });
         break;
       case 'teses':
-        this.appService.deleteTese(id)
+        this.appService.deleteTese(id).subscribe((response) => {
+          console.log('------------------------- Teses');
+          console.log(response);
+          this.storeApp.dispatch(getBookShelfTeses());
+        });
         break;
     }
   }
