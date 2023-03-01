@@ -22,7 +22,7 @@
 
     <div class="w-100 mt-3 d-flex justify-content-between">
       <div class="w-50">
-        <h6 class="my-4">Seus Livros</h6>
+        <h6 class="my-5">Seus Livros</h6>
       </div>
       <div class="search-box">
         <input #mySearch name="filtro" type="text" class="search-text" placeholder="Pesquisar..." [(ngModel)]="filtro" id="filtro">
@@ -43,35 +43,35 @@
           <div class="d-flex flex-wrap container">
             <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of bookShelf$ |async">
 
+              <!-- =======================BOTÃO DELETAR============================ -->
+              <a class="btn btn-delete align-text-bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"></a>
+
               <div class="image">
                 <img src="{{book.foto}}" class="card-img-top" alt="...">
               </div>
               <div class="card-body W-100">
                 <div class="d-flex justify-content-between">
-                  <p class="read">{{book.lido}}</p>
-                  <img src="../../../assets/icons/more.png" alt="" height="35px" data-bs-toggle="modal" data-bs-target="#optionsModal">
+                  
+                  <p class="read"  *ngIf="book.lido==true">lido</p>
+                  <p class="no-read"  *ngIf="book.lido==false">não lido</p>
+                  <div class="d-flex">
+                    <button class="btn btn-outline-primary btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setPutByBookId(book.id)">EDITAR
+                      <img src="../../../assets/icons/pincel-grande.png" alt="" height="17px" data-bs-toggle="modal" data-bs-target="#optionsModal">
+
+                    </button>
                 </div>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                  </ul>
                 </div>
+                
                 <div class="d-flex justify-content-between">
                   <h6 class="card-title mt-2">{{book.titulo}}</h6>
 
                 </div>
                 <p class="card-text">{{book.autor}}</p>
                 <a (click)="getBookById(book.id)" class="btn btn-primario w-100">Ver mais</a>
-                <a (click)="deleteBookById(book.id, book.tipo_livro)" class="btn btn-primario mt-3 w-100"> Excluir </a>
-                <a class="btn btn-primario mt-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setPutByBookId(book.id)"> Editar </a>
-              </div>
+               
+
+
+              </div>              
             </div>
           </div>
         </div>
@@ -122,6 +122,25 @@
   </div>
 </div>
 
+<!-- =====================MODAL DELETAR================================= -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" *ngFor="let book of bookShelf$ |async">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <div class="modal-header" >
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center">Deseja mesmo excluir esse livro?</h4>
+        <div class="d-flex w-100 mt-3">
+        <button class="btn btn-outline-secondary w-50 mx-3" data-bs-dismiss="modal" aria-label="Close" type="button">Cancelar</button>
+        <button class="btn btn btn-danger w-50" (click)="deleteBookById(book.id, book.tipo_livro)" data-bs-dismiss="modal" aria-label="Close" type="button" >Excluir</button>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =====================MODAL EDITAR================================= -->
 <div class="modal fade" id="exampleModal" *ngIf="put$ as book" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -218,3 +237,4 @@
     </div>
   </div>
 </div>
+

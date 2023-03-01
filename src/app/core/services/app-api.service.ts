@@ -76,7 +76,6 @@ export class AppApiService {
   }
 
   deleteBookKindle(id: number): Observable<Book[]> {
-    debugger
     return this.httpApi.deleteApiByHttpClient(`/kindle/${id}`, this.header);
   }
 
