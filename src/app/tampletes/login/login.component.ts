@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     this.authenticationServiceService.authenticate(this.username, this.password).subscribe(
       data => {
-        // console.log(this.username + "---------" +this.password)
         this.router.navigate(['/dashboard'])
         this.globalAbstractService.noSidebar=true;
       },

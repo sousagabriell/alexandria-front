@@ -28,7 +28,9 @@ import { AppApiService } from 'src/app/core/services/app-api.service';
 export class DashboardComponent implements OnInit {
   constructor(
     private storeApp: Store<{ app: BookState }>,
-    private appService: AppApiService
+    private appService: AppApiService,
+    public globalAbstractService: GlobalAbstractsService
+    
   ) {}
 
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(

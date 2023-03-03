@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
 export class GlobalAbstractsService {
 
   public noSidebar:boolean=false
+  public notificationregisteredBook$:boolean=false
 
   constructor(
     private router: Router
   ) { }
+
 
   noSideBarOnInit(){
     if(this.router.url=="/cadastro"){

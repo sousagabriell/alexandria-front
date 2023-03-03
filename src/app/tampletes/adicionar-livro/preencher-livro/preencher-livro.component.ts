@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { BookState } from 'src/app/core/store';
 import { getBookShelfKindle, getBookShelfPdf, getBookShelfFisic, getBookShelfTeses } from 'src/app/core/store/app.actions';
+import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 
 @Component({
   selector: 'app-preencher-livro',
@@ -17,7 +18,8 @@ export class PreencherLivroComponent implements OnInit {
   constructor(
     public appApiService: AppApiService,
      private storeApp: Store<{ app: BookState }>,
-     private router:Router
+     private router:Router,
+     public globalAbstractService: GlobalAbstractsService
      ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,11 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response)
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
+          this.globalAbstractService.notificationregisteredBook$=true
+          if(this.globalAbstractService.notificationregisteredBook$ = true)
+          setTimeout(()=>{
+            this.globalAbstractService.notificationregisteredBook$=false
+          },5000)
         });
         break;
       case 'pdf':
@@ -40,6 +47,7 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response);  
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
+          this.globalAbstractService.notificationregisteredBook$=true
         });
         break;
       case 'fisico':
@@ -48,6 +56,7 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
           frm.reset();
+          this.globalAbstractService.notificationregisteredBook$=true
         });
         break;
       case 'teses':
@@ -55,7 +64,8 @@ export class PreencherLivroComponent implements OnInit {
           console.log("------------------------- Teses")
           console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
-          frm.reset();
+          frm.reset();    
+          this.globalAbstractService.notificationregisteredBook$=true
         });
         break;
     }

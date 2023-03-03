@@ -2,6 +2,9 @@ $color-primary: #4a80f0;
 $color-secundary: #1a1a23;
 $color-tercery: #fdfdfd;
 
+
+
+
 .sobre {
     background-color: rgba(23, 56, 125, 1);
     height: 100vh;
@@ -127,15 +130,20 @@ $color-tercery: #fdfdfd;
 .read {
     text-transform: uppercase;
     background-color: #4af0b9;
+    color: #3d3d3d;
     padding: 10px;
     border-radius: 20px;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 500 !important;
 }
 .no-read {
     text-transform: uppercase;
     background-color: #f2e202;
-    color: #1b1b1b;
+    color: #3d3d3d;
     padding: 10px;
     border-radius: 20px;
+    font-family: 'TT Norms Pro', sans-serif;
+    font-weight: 500 !important;
 }
 
 .filter {
@@ -175,14 +183,44 @@ $color-tercery: #fdfdfd;
 .btn-edit {
     text-align: center;
     height: 4.5vh;
-    
+    position: absolute;
+    margin-left: 10.6vw !important;
+    z-index: 9;
+    margin-top: -4.5vh;
+    border-radius: 100%;
+    background-color: #dfdfdf;
+    border: none;
+    -webkit-box-shadow: -11px 15px 27px -14px rgba(0, 0, 0, 1);
+    -moz-box-shadow: -11px 15px 27px -14px rgba(0, 0, 0, 1);
+    box-shadow: -11px 15px 27px -14px rgba(0, 0, 0, 1);
+}
+.btn-edit:hover {
+    background-color: #cacaca;
 }
 
-.modal-dialog {
-    margin-top: 40vh;
-    z-index: 9999;
+.modal-delete {
+    margin-top: 40vh !important;
 }
 
 .modal-backdrop.show {
     display: none !important;
+}
+.btn-more{
+    background-color: $color-primary;
+    height: 4vh;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600 !important;
+}
+.btn-more:hover{
+    background-color: #3b67c0;
+    height: 4vh;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600 !important;
+}
+.btn-edit:focus {
+    box-shadow: none;
+}
+.modal-edit{
+    margin-top: 10vh;
+    width: 60vw !important;
 }
