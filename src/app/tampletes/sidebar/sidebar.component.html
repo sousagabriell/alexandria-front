@@ -42,7 +42,7 @@
 
             <div class="d-flex">
                 <li class="list-group-item">
-                    <img src="../../assets/newspaper.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Novidades
                 </li>
             </div>
@@ -50,33 +50,33 @@
 
             <div class="d-flex">
                 <li class="list-group-item">
-                    <img src="../../assets/microphone.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Artistas
                 </li>
             </div>
 
             <div class="d-flex">
                 <li class="list-group-item">
-                    <img src="../../assets/handshake.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Apoio
                 </li>
             </div>
 
             <div class="d-flex">
                 <li class="list-group-item">
-                    <img src="../../assets/group.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Quem Somos
                 </li>
             </div>
             <div class="d-flex">
                 <li class="list-group-item">
-                    <img src="../../assets/info.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Sobre
                 </li>
             </div>
             <div class="d-flex">
                 <li class="list-group-item mt-5">
-                    <img src="../../assets/playlist.png" alt="" srcset="" style="width: 25px; height: 25px;">
+                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
                     Playlist
                 </li>
             </div>
@@ -117,10 +117,10 @@
                 </div>
                 </div>
                     <div class="d-flex justify-content-center mt-2 mb-3">
-                        <img src="../../../assets/img-perfil.png" alt="" class="img-fluid img-settings" style="width: 50%; border-radius: 50%;">
+                        <img src="{{photoUser}}" alt="" class="img-fluid img-settings" style="width: 50%; border-radius: 100%; height: 18vh">
                     </div>
-                    <h4 class="text-center text-white">Usuario Ui</h4>
-                    <p class="text-center text-white">@usuarioteste</p>
+                    <h4 class="text-center text-white">{{nameUser}}</h4>
+                    <p class="text-center text-white">{{nicknameUser}}</p>
                     <hr class="w-50 mb-4">
                     <ul class="list-group list-group-flush list">
                         <div class="d-flex">
@@ -165,7 +165,7 @@
                         <div class="d-flex">
                             <li class="list-group-item link">
                                 <img src="../../../assets/icons/logout.png" alt="" srcset="" style="width: 25px;">
-                                <a routerLink='/quem-somos' routerLinkActive="active">Sair</a>
+                                <a routerLink='/quem-somos' routerLinkActive="active" (click)="logout()">Sair</a>
                             </li>
                         </div>
                     </ul>

@@ -14,51 +14,69 @@
             <div class="login-account">
                 <h2>Cadastre-se</h2>
                 <p class="text-login mt-4">Crie uma conta e comece a organizar seus livros.</p>
-                <form action="" method="post" #frm="ngForm" (ngSubmit)="postUser(frm)">
+                <form  method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="postUser()">
                 <div class="row g-3 align-items-center mt-3 d-block">
                     <div class="d-flex">
                         <div class="col-auto">
                             <input id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Nome" 
-                                [(ngModel)]="users$.nome" name="nome" id="nome">
+                                aria-describedby="passwordHelpInline" placeholder="Nome*" 
+                                [(ngModel)]="users$.nome" name="nome" id="nome" formControlName="name">
+                                <div *ngIf="form.get('name')?.errors && form.get('name')?.touched">
+                                    <span class="form-invalid">Nome obrigatório</span>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex mb-4">
 
                         <div class="col-auto">
                             <input id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Email"
-                                [(ngModel)]="users$.email" name="email" id="email">
+                                aria-describedby="passwordHelpInline" placeholder="Email*"
+                                [(ngModel)]="users$.email" name="email" id="email" formControlName="email">
+                                <div *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+                                    <span class="form-invalid">Email inválido</span>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex mb-4">
 
                         <div class="col-auto">
                             <input id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Usuario"
-                                [(ngModel)]="users$.usuario" name="usuario" id="usuario">
+                                aria-describedby="passwordHelpInline" placeholder="Usuario*"
+                                [(ngModel)]="users$.usuario" name="usuario" id="usuario" formControlName="user">
+                                <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
+                                    <span class="form-invalid">Usuário obrigatório</span>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex mb-4">
 
                         <div class="col-auto">
                             <input id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Link para foto de perfil"
-                                [(ngModel)]="users$.foto" name="foto" id="foto"> 
+                                aria-describedby="passwordHelpInline" placeholder="Link para foto de perfil*"
+                                [(ngModel)]="users$.foto" name="foto" id="foto" formControlName="photo"> 
+                                <div *ngIf="form.get('photo')?.errors && form.get('photo')?.touched">
+                                     <span class="form-invalid">Foto obrigatória</span>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex mb-4">
 
                         <div class="col-auto">
                             <input type="password" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Senha"
-                                [(ngModel)]="users$.senha" name="senha" id="senha">
+                                aria-describedby="passwordHelpInline" placeholder="Senha*"
+                                [(ngModel)]="users$.senha" name="senha" id="senha" formControlName="password">
+                                <div *ngIf="form.get('password')?.errors && form.get('password')?.touched">
+                                     <span class="form-invalid">Senha obrigatória</span>
+                                </div>
                         </div>
                     </div>
                     <div class="d-flex mb-5">
                         <div class="col-auto">
                             <input type="password" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Confirmar senha">
+                                aria-describedby="passwordHelpInline" placeholder="Confirmar senha*" formControlName="confirmpassword">
+                                <div *ngIf="form.get('confirmpassword')?.errors && form.get('confirmpassword')?.touched">
+                                     <span class="form-invalid">Senhas não coincidem</span>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +84,7 @@
                 <hr class="mb-4 mt-4">
                 <div class="d-flex justify-content-between mb-3">
                     <button class="btn btn-outline-secondary w-25 d-flex justify-content-center" [routerLink]="['/login']"><span>Voltar</span></button>
-                    <button class="btn btn-primario d-flex justify-content-center" type="submit" [disabled]="frm.invalid"><span>Cadastre-se</span></button>
+                    <button class="btn btn-primario d-flex justify-content-center" type="submit" [disabled]="!form.valid"><span>Cadastre-se</span></button>
                 </div>
             </form>
             </div>

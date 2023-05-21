@@ -15,7 +15,10 @@ export class GlobalAbstractsService {
 
 
   noSideBarOnInit(){
-    if(this.router.url=="/cadastro"){
-    this.noSidebar=false}
+    if(this.router.url=="/cadastro" ){
+    this.noSidebar=false
+  }    if(this.router.url=="/login" ){
+    this.noSidebar=false
+  }
   }
 }

@@ -20,6 +20,7 @@ import {
 import { NgForm } from '@angular/forms';
 import { AppApiService } from 'src/app/core/services/app-api.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,8 +40,9 @@ export class DashboardComponent implements OnInit {
   );
   bookById$!: Observable<Book>;
   filtro: any;
-  put$:any
-  navActive$:boolean=false
+  put$:any;
+  navActive$:boolean=false;
+  nameUser:string = environment.nome
 
   
   ngOnInit(): void {

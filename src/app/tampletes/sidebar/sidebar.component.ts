@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment.prod';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,13 +15,26 @@ export class SidebarComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  nameUser = sessionStorage.getItem('name')
+  nameUser = environment.nome
+  photoUser = environment.foto
+  nicknameUser = environment.usuario
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.nameUser+"=========")
+    if (this.photoUser === ''){
+      this.photoUser = "../../../assets/img-perfil.png"
+    }
+  }
 
+  logout() {
+    this.router.navigate(['/login'])
+    environment.token = ''
+    environment.nome = ''
+    environment.foto = ''
+    environment.usuario = ''
   }
 
 }
