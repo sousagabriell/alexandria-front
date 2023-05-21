@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../interfaces/book';
 import { HeaderList } from '../interfaces/header-list.interface';
+import { ParametersList } from '../interfaces/parameter-list.interface';
 import { ConectorApiService } from './conector-api/conector-api.service';
 
 @Injectable({
@@ -41,6 +42,44 @@ export class AppApiService {
 
   getTeses(): Observable<Book[]> {
     return this.httpApi.getApiByHttpClient('/teses', this.header);
+  }
+
+  getBooksKindleById(id: number): Observable<Book[]> {
+    let paramId: ParametersList = {
+      value: id.toString(),
+      label: 'id',
+    };
+    return this.httpApi.getApiByHttpClient('/kindle', this.header, [paramId]);
+  }
+
+  getBooksFisicsById(id: number): Observable<Book[]> {
+    let paramId: ParametersList = {
+      value: id.toString(),
+      label: 'id',
+    };
+    return this.httpApi.getApiByHttpClient('/fisico/' + id, this.header, [
+      paramId,
+    ]);
+  }
+
+  getPdfById(id: number): Observable<Book[]> {
+    let paramId: ParametersList = {
+      value: id.toString(),
+      label: 'id',
+    };
+    return this.httpApi.getApiByHttpClient('/pdf/' + id, this.header, [
+      paramId,
+    ]);
+  }
+
+  getTesesById(id: number): Observable<Book[]> {
+    let paramId: ParametersList = {
+      value: id.toString(),
+      label: 'id',
+    };
+    return this.httpApi.getApiByHttpClient('/teses/' + id, this.header, [
+      paramId,
+    ]);
   }
 
   postBookKindle(body: any): Observable<any> {

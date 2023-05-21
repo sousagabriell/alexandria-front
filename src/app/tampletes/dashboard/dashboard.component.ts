@@ -19,6 +19,7 @@ import {
 } from 'src/app/core/store/app.selector';
 import { NgForm } from '@angular/forms';
 import { AppApiService } from 'src/app/core/services/app-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,8 +30,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private storeApp: Store<{ app: BookState }>,
     private appService: AppApiService,
-    public globalAbstractService: GlobalAbstractsService
-    
+    public globalAbstractService: GlobalAbstractsService,
+    public router: Router
   ) {}
 
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(
@@ -63,9 +64,10 @@ export class DashboardComponent implements OnInit {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfTeses));
   }
 
-  deleteBookById(id: number, tipe: string) {
-    switch (tipe) {
+  deleteBookById(id: number, type: string) {
+    switch (type) {
       case 'kindle':
+        debugger;
         this.appService.deleteBookKindle(id).subscribe((response: any) => {
           console.log('------------------------- Kidle');
           console.log(response);
@@ -112,43 +114,43 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  setPutByBookId(id: number, type: string) {
+    this.router.navigate(['/edit'], {
+      queryParams: { bookId: id, bookType: type },
+    });
+  }
 
-setPutByBookId(id:number){
-  this.getBookById(id)
-  this.bookById$.subscribe(data=>{
-    this.put$=data
-  })
-}
-
-  putBook(frm: NgForm, type:string) {
+  putBook(frm: NgForm, type: string) {
     switch (type) {
       case 'kindle':
         this.appService.putBookKindle(this.put$).subscribe((response: any) => {
-          console.log("------------------------- Kidle")
-          console.log(response)
+          console.log('------------------------- Kidle');
+          console.log(response);
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
         });
         break;
       case 'pdf':
         this.appService.postPdf(this.bookById$).subscribe((response: any) => {
-          console.log("------------------------- Pdf")
-          console.log(response);  
+          console.log('------------------------- Pdf');
+          console.log(response);
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
         });
         break;
       case 'fisico':
-        this.appService.postBookFisic(this.bookById$).subscribe((response: any) => {
-          console.log("------------------------- Fisico")
-          console.log(response);
-          this.storeApp.dispatch(getBookShelfFisic());
-          frm.reset();
-        });
+        this.appService
+          .postBookFisic(this.bookById$)
+          .subscribe((response: any) => {
+            console.log('------------------------- Fisico');
+            console.log(response);
+            this.storeApp.dispatch(getBookShelfFisic());
+            frm.reset();
+          });
         break;
       case 'teses':
         this.appService.postTeses(this.bookById$).subscribe((response: any) => {
-          console.log("------------------------- Teses")
+          console.log('------------------------- Teses');
           console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
           frm.reset();

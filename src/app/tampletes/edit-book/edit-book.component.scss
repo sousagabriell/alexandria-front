@@ -1,0 +1,47 @@
+h2 {
+    color: #4a80f0;
+}
+
+.livro {
+    height: 100vh;
+}
+
+.livro-capa {
+    height: 60vh;
+    width: 60%;
+    background: #4a80f0;
+}
+
+.foto {
+    width: 100%;
+    height: 100%;
+    z-index: -9;
+}
+
+.gradiente-foto {
+    width: 17vw;
+    height: 60%;
+    background: rgb(1, 0, 25);
+    background: linear-gradient(0deg, rgba(1, 0, 25, 0.781) 0%, rgba(0, 0, 0, 0.42200630252100846) 100%);
+    position: absolute;
+}
+
+.info-livro{
+    z-index: 9999;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 2%;
+    z-index: 3;
+    color: #fff;
+    animation-name: info-livro;
+    animation-duration: 10s;
+}
+@keyframes info-livro {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+

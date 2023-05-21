@@ -47,7 +47,7 @@
             <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of bookShelf$ |async">
 
               <!-- =======================BOTÃO DELETAR============================ -->
-              <a class="btn btn-delete align-text-bottom" data-bs-toggle="modal" data-bs-target="#deleteModal"></a>
+              <button class="btn btn-delete align-text-bottom" (click)="deleteBookById(book.id, book.tipo_livro)"></button>
 
 
 
@@ -62,7 +62,7 @@
 
 
                   <button class="btn btn-outline-primary btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    (click)="setPutByBookId(book.id)">
+                    (click)="setPutByBookId(book.id, book.tipo_livro)">
                     <img src="../../../assets/icons/ferramenta-lapis.png" alt="" height="17px" data-bs-toggle="modal"
                       data-bs-target="#exampleModal">
 
