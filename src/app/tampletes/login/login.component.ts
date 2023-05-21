@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/core/services/authentication-service.service';
 import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
-import { environments } from 'src/environments/environment.prod';
 import { UserLogin } from 'src/app/core/interfaces/userLogin';
 
 

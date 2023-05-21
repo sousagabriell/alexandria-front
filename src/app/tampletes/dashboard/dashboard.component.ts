@@ -39,14 +39,16 @@ export class DashboardComponent implements OnInit {
   bookById$!: Observable<Book>;
   filtro: any;
   put$:any
+  navActive$:boolean=false
 
-
+  
   ngOnInit(): void {
     this.getBookById(1);
   }
 
   getBookKindle() {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfKindle));
+    this.navActive$=true
   }
 
   getBookFisics() {

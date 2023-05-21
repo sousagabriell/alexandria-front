@@ -1,4 +1,5 @@
-export const environments = {
+export const environment = {
   production: true,
-  token: ''
+  token: '',
+  baseUrl: "http://localhost:8080"
 };
