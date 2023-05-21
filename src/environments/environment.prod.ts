@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   token: '',
-  baseUrl: "https://alexandria-production.up.railway.app/"
+  baseUrl: "https://alexandria-production.up.railway.app"
 };
