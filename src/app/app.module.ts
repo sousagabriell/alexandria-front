@@ -19,6 +19,7 @@ import { PreencherLivroComponent } from './tampletes/adicionar-livro/preencher-l
 import { CadastroComponent } from './tampletes/cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { NotificacoesComponent } from './tampletes/ferramentas/notificacoes/notificacoes.component';
+import { EditBookComponent } from './tampletes/edit-book/edit-book.component';
 
 
 
@@ -33,7 +34,8 @@ import { NotificacoesComponent } from './tampletes/ferramentas/notificacoes/noti
     TipoLivroComponent,
     PreencherLivroComponent,
     CadastroComponent,
-    NotificacoesComponent
+    NotificacoesComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
