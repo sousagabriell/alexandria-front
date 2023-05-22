@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       environment.foto = this.userLogin.foto
       environment.nome = this.userLogin.nome
       environment.usuario = this.userLogin.usuario
+      this.router.navigate(['/dashboard'])
+      this.globalAbstractService.noSidebar=true;
     })
     this.errorLogin()
   }
