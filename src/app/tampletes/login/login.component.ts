@@ -22,16 +22,16 @@ export class LoginComponent implements OnInit {
     public globalAbstractService: GlobalAbstractsService,
     public authenticationServiceService: AuthenticationServiceService,
     public globalAbstractsService: GlobalAbstractsService,
-  ) { 
+  ) {
   }
   errorUser: boolean = false
   ngOnInit(
   ): void {
     this.globalAbstractService.noSideBarOnInit()
   }
-  goToDashboard(){
+  goToDashboard() {
     this.router.navigate(['/dashboard']);
-    this.globalAbstractService.noSidebar=true
+    this.globalAbstractService.noSidebar = true
   }
   checkLogin() {
     this.authenticationServiceService.authenticate(this.username, this.password).subscribe((resp: UserLogin) => {
@@ -40,15 +40,15 @@ export class LoginComponent implements OnInit {
       environment.foto = this.userLogin.foto
       environment.nome = this.userLogin.nome
       environment.usuario = this.userLogin.usuario
-      this.router.navigate(['/dashboard'])
-      this.globalAbstractService.noSidebar=true;
     })
     this.errorLogin()
   }
-  
-  errorLogin(){
-    setTimeout(() => {if(this.userLogin.usuario==''){
-      this.errorUser = true
-    }}, 2000);
+
+  errorLogin() {
+    setTimeout(() => {
+      if (this.userLogin.usuario == '') {
+        this.errorUser = true
+      }
+    }, 2000);
   }
 }

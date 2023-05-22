@@ -30,8 +30,6 @@ export class PreencherLivroComponent implements OnInit {
     switch (this.appApiService.bookType) {
       case 'kindle':
         this.appApiService.postBookKindle(this.post$).subscribe((response) => {
-          console.log("------------------------- Kidle")
-          console.log(response)
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
           this.globalAbstractService.notificationMessage = "adicionado"
@@ -44,8 +42,6 @@ export class PreencherLivroComponent implements OnInit {
         break;
       case 'pdf':
         this.appApiService.postPdf(this.post$).subscribe((response) => {
-          console.log("------------------------- Pdf")
-          console.log(response);  
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
           this.globalAbstractService.notificationMessage = "adicionado"
@@ -54,8 +50,6 @@ export class PreencherLivroComponent implements OnInit {
         break;
       case 'fisico':
         this.appApiService.postBookFisic(this.post$).subscribe((response) => {
-          console.log("------------------------- Fisico")
-          console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
           frm.reset();
           this.globalAbstractService.notificationMessage = "adicionado"
@@ -64,8 +58,6 @@ export class PreencherLivroComponent implements OnInit {
         break;
       case 'teses':
         this.appApiService.postTeses(this.post$).subscribe((response) => {
-          console.log("------------------------- Teses")
-          console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
           frm.reset();
           this.globalAbstractService.notificationMessage = "adicionado"  

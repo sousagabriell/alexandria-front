@@ -41,8 +41,6 @@ export class EditBookComponent implements OnInit {
     switch (this.bookType) {
       case 'kindle':
         this.appApiService.putBookKindle(this.put$).subscribe((response) => {
-          console.log('------------------------- Kidle');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
           this.globalAbstractService.notificationregisteredBook$ = true;
@@ -55,8 +53,7 @@ export class EditBookComponent implements OnInit {
         break;
       case 'pdf':
         this.appApiService.postPdf(this.put$).subscribe((response) => {
-          console.log('------------------------- Pdf');
-          console.log(response);
+
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
           this.globalAbstractService.notificationMessage = "atualizado"
@@ -65,8 +62,6 @@ export class EditBookComponent implements OnInit {
         break;
       case 'fisico':
         this.appApiService.postBookFisic(this.put$).subscribe((response) => {
-          console.log('------------------------- Fisico');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
           frm.reset();
           this.globalAbstractService.notificationMessage = "atualizado"
@@ -75,8 +70,6 @@ export class EditBookComponent implements OnInit {
         break;
       case 'teses':
         this.appApiService.postTeses(this.put$).subscribe((response) => {
-          console.log('------------------------- Teses');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
           frm.reset();
           this.globalAbstractService.notificationMessage = "atualizado"

@@ -33,48 +33,56 @@ export class DashboardComponent implements OnInit {
     private appService: AppApiService,
     public globalAbstractService: GlobalAbstractsService,
     public router: Router
-  ) {}
+  ) { }
 
   bookShelf$: Observable<Book[]> = this.storeApp.pipe(
     select(selectBookShelfKindle)
   );
   bookById$!: Observable<Book>;
   filtro: any;
-  put$:any;
-  navActive$:boolean=false;
-  nameUser:string = environment.nome
+  put$: any;
+  navActive$: boolean = false;
+  nameUser: string = environment.nome
 
-  
+
   ngOnInit(): void {
+    this.getBooks()
     this.getBookById(1);
+  }
+
+  getBooks() {
+      this.storeApp.dispatch(getBookShelfKindle());
+      this.storeApp.dispatch(getBookShelfFisic());
+      this.storeApp.dispatch(getBookShelfPdf());
+      this.storeApp.dispatch(getBookShelfTeses());
   }
 
   activeTab = 'kindle';
 
-  routerKindle(activeTab: string){
+  routerKindle(activeTab: string) {
     switch (activeTab) {
-      case'kindle':
-      this.activeTab = activeTab;
-      break
-      case'fisicos':
-      this.activeTab = activeTab;
-      break
-      case'pdf':
-      this.activeTab = activeTab;
-      break
-      case'teses':
-      this.activeTab = activeTab;
-      break
+      case 'kindle':
+        this.activeTab = activeTab;
+        break
+      case 'fisicos':
+        this.activeTab = activeTab;
+        break
+      case 'pdf':
+        this.activeTab = activeTab;
+        break
+      case 'teses':
+        this.activeTab = activeTab;
+        break
     }
   }
 
-  fisicos(activeTab: string){
+  fisicos(activeTab: string) {
     this.activeTab = activeTab;
   }
 
   getBookKindle(kindle: string) {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfKindle));
-    this.navActive$=true
+    this.navActive$ = true
     this.routerKindle(kindle)
   }
 
@@ -98,29 +106,21 @@ export class DashboardComponent implements OnInit {
       case 'kindle':
         debugger;
         this.appService.deleteBookKindle(id).subscribe((response: any) => {
-          console.log('------------------------- Kidle');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfKindle());
         });
         break;
       case 'fisico':
         this.appService.deleteBookFisic(id).subscribe((response: any) => {
-          console.log('------------------------- Fisico');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
         });
         break;
       case 'pdf':
         this.appService.deletePdf(id).subscribe((response: any) => {
-          console.log('------------------------- PDF');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfPdf());
         });
         break;
       case 'teses':
         this.appService.deleteTese(id).subscribe((response: any) => {
-          console.log('------------------------- Teses');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
         });
         break;
@@ -153,16 +153,12 @@ export class DashboardComponent implements OnInit {
     switch (type) {
       case 'kindle':
         this.appService.putBookKindle(this.put$).subscribe((response: any) => {
-          console.log('------------------------- Kidle');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
         });
         break;
       case 'pdf':
         this.appService.postPdf(this.bookById$).subscribe((response: any) => {
-          console.log('------------------------- Pdf');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
         });
@@ -171,16 +167,12 @@ export class DashboardComponent implements OnInit {
         this.appService
           .postBookFisic(this.bookById$)
           .subscribe((response: any) => {
-            console.log('------------------------- Fisico');
-            console.log(response);
             this.storeApp.dispatch(getBookShelfFisic());
             frm.reset();
           });
         break;
       case 'teses':
         this.appService.postTeses(this.bookById$).subscribe((response: any) => {
-          console.log('------------------------- Teses');
-          console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
           frm.reset();
         });

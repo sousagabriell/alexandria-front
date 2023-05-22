@@ -38,7 +38,6 @@ export class CadastroComponent implements OnInit {
 
   postUser(){
     this.authenticationServiceService.postNewUser(this.users$).subscribe((response)=>{
-      console.log(response)
       this.router.navigate(['/login'])
     })
   }

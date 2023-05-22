@@ -24,17 +24,12 @@ export class AppComponent implements OnInit {
    private router: Router) { 
    }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.storeApp.dispatch(getBookShelfKindle());
     this.storeApp.dispatch(getBookShelfFisic());
     this.storeApp.dispatch(getBookShelfPdf());
     this.storeApp.dispatch(getBookShelfTeses());
   }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-
-  
 }
+    
+
