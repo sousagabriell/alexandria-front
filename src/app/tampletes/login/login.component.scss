@@ -225,6 +225,9 @@ input{
       margin-top: 1vh;
     }
 }
+.input-user{
+  margin-left: -1vh;
+}
 hr{
   @media screen and (max-width: 767px){
     border-top: 3px solid #fdfdfd !important;

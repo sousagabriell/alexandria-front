@@ -8,11 +8,11 @@ export class GlobalAbstractsService {
 
   public noSidebar:boolean=false
   public notificationregisteredBook$:boolean=false
+  public notificationMessage: string = ''
 
   constructor(
     private router: Router
   ) { }
-
 
   noSideBarOnInit(){
     if(this.router.url=="/cadastro" ){

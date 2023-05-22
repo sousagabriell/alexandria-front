@@ -2,58 +2,60 @@
     <div class="row">
         <div class="col-md-6 login">
 
-                <div class="brand">
-                    <img src="../../../assets/images/logo/alexandria-logo.png" alt="" srcset="" width="200em"
-                        class="img-thumb">
-                </div>
-                <div class="brand-mobile">
-                    <img src="../../../assets/images/logo/alexandria-logo-mobile.png" alt="" srcset="" width="200em"
-                        class="img-thumb">
-                </div>
-                <div class="blur-mobile"></div>
-                <div class="login-account">
-                    <h2>Login</h2>
-                    <p class="text-login mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                        error explicabo libero, corporis debitis eum officiis consequatur ducimus ad aspernatur</p>
+            <div class="brand">
+                <img src="../../../assets/images/logo/alexandria-logo.png" alt="" srcset="" width="200em"
+                    class="img-thumb">
+            </div>
+            <div class="brand-mobile">
+                <img src="../../../assets/images/logo/alexandria-logo-mobile.png" alt="" srcset="" width="200em"
+                    class="img-thumb">
+            </div>
+            <div class="blur-mobile"></div>
+            <div class="login-account">
+                <h2>Login</h2>
+                <p class="text-login mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                    error explicabo libero, corporis debitis eum officiis consequatur ducimus ad aspernatur</p>
 
-                    <div class="row g-3 align-items-center mt-3 d-block">
-                        <div class="d-flex">
-                            <div class="col-auto mr-4">
-                                <label for="inputPassword6" class="col-form-label">Email:</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="email" id="inputPassword6" class="form-control"
-                                    aria-describedby="passwordHelpInline" placeholder="Email" [(ngModel)]="username"
-                                    name="username" id="username">
-                            </div>
+                <div class="row g-3 align-items-center mt-3 d-block">
+                    <div class="d-flex">
+                        <div class="col-auto mr-4">
+                            <label for="inputPassword6" class="col-form-label">Usuario:</label>
                         </div>
-                        <div class="d-flex mb-4">
-                            <div class="col-auto mr-4">
-                                <label for="inputPassword6" class="col-form-label">Senha:</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="password" id="inputPassword6" class="form-control"
-                                    aria-describedby="passwordHelpInline" placeholder="Senha"
-                                    name="password" id="password" [(ngModel)]="password">
-                            </div>
+                        <div class="col-auto">
+                            <input type="email" id="inputPassword6" class="form-control input-user"
+                                aria-describedby="passwordHelpInline" placeholder="Email" [(ngModel)]="username"
+                                name="username" id="username">
                         </div>
                     </div>
-                    <div class="text-right">
-                        <a href="" class="text-right">Esqueceu sua senha?</a>
-                    </div>
-                    <hr class="mb-4 mt-4">
-                    <div class="d-flex justify-content-between mb-3">
-                        <div>
-                            <input type="checkbox" id="horns" name="horns">
-                            <label for="horns">Lembrar login</label>
+                    <div class="d-flex mb-4">
+                        <div class="col-auto mr-4">
+                            <label for="inputPassword6" class="col-form-label">Senha:</label>
                         </div>
-                        <button class="btn btn-primario" (click)="checkLogin()">Login</button>
+                        <div class="col-auto">
+                            <input type="password" id="inputPassword6" class="form-control"
+                                aria-describedby="passwordHelpInline" placeholder="Senha" name="password" id="password"
+                                [(ngModel)]="password">
+                        </div>
                     </div>
-                    <p class="text-cadastro">Ainda não tem conta? <a href=""
-                            [routerLink]="['/cadastro']">Cadastre-se</a>
-                    </p>
-
+                    <div *ngIf="this.errorUser">
+                        <span class="form-invalid">Usuário e senha inválidos</span>
+                    </div>
                 </div>
+                <div class="text-right">
+                    <a href="" class="text-right">Esqueceu sua senha?</a>
+                </div>
+                <hr class="mb-4 mt-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <div>
+                        <input type="checkbox" id="horns" name="horns">
+                        <label for="horns">Lembrar login</label>
+                    </div>
+                    <button class="btn btn-primario" (click)="checkLogin()">Login</button>
+                </div>
+                <p class="text-cadastro">Ainda não tem conta? <a href="" [routerLink]="['/cadastro']">Cadastre-se</a>
+                </p>
+
+            </div>
         </div>
         <div class="col-md-6">
             <div class="login-announcement">

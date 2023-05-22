@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     public globalAbstractsService: GlobalAbstractsService,
   ) { 
   }
-
+  errorUser: boolean = false
   ngOnInit(
   ): void {
     this.globalAbstractService.noSideBarOnInit()
@@ -42,8 +42,13 @@ export class LoginComponent implements OnInit {
       environment.usuario = this.userLogin.usuario
       this.router.navigate(['/dashboard'])
       this.globalAbstractService.noSidebar=true;
-    }
-    )
+    })
+    this.errorLogin()
+  }
+  
+  errorLogin(){
+    setTimeout(() => {if(this.userLogin.usuario==''){
+      this.errorUser = true
+    }}, 2000);
   }
 }
-

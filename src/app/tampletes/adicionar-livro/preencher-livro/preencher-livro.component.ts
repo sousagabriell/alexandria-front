@@ -34,6 +34,7 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response)
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "adicionado"
           this.globalAbstractService.notificationregisteredBook$=true
           if(this.globalAbstractService.notificationregisteredBook$ = true)
           setTimeout(()=>{
@@ -47,6 +48,7 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response);  
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "adicionado"
           this.globalAbstractService.notificationregisteredBook$=true
         });
         break;
@@ -56,6 +58,7 @@ export class PreencherLivroComponent implements OnInit {
           console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "adicionado"
           this.globalAbstractService.notificationregisteredBook$=true
         });
         break;
@@ -64,7 +67,8 @@ export class PreencherLivroComponent implements OnInit {
           console.log("------------------------- Teses")
           console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
-          frm.reset();    
+          frm.reset();
+          this.globalAbstractService.notificationMessage = "adicionado"  
           this.globalAbstractService.notificationregisteredBook$=true
         });
         break;

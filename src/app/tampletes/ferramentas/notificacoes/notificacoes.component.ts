@@ -8,11 +8,14 @@ import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstract
 })
 export class NotificacoesComponent implements OnInit {
 
+  message: string = this.globalAbstractService.notificationMessage
   constructor(
     public globalAbstractService: GlobalAbstractsService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(
+  ): void {
+    console.log(this.message)
   }
 
 }

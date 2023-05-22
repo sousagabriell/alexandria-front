@@ -4,21 +4,21 @@
   <div class="col-md-6 position">
     <app-notificacoes></app-notificacoes>
     <h2 class="my-4">Bem-Vindo, {{nameUser}}</h2>
-    
 
 
-    <ul class="nav nav-tabs navigator">
+
+    <ul class="nav nav-tabs navigator" id="tabs">
       <li class="nav-item">
-        <a class="nav-link active" (click)="getBookKindle()">Kindle</a>
+        <a class="nav-link active" (click)="getBookKindle('kindle')" [ngClass]="{ 'active':activeTab==='kindle'}" data-toggle="tab">Kindle</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="getBookFisics()">Fisícos</a>
+        <a class="nav-link" (click)="getBookFisics('fisicos')" [ngClass]="{ 'active':activeTab==='fisicos'}" data-toggle="tab">Fisícos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="getBookPdf()">Pdf</a>
+        <a class="nav-link" (click)="getBookPdf('pdf')" [ngClass]="{ 'active':activeTab==='pdf'}" data-toggle="tab">Pdf</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="getBookTeses()">Teses</a>
+        <a class="nav-link" (click)="getBookTeses('teses')" [ngClass]="{ 'active':activeTab==='teses'}" data-toggle="tab">Teses</a>
       </li>
     </ul>
 
@@ -47,7 +47,8 @@
             <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of bookShelf$ |async">
 
               <!-- =======================BOTÃO DELETAR============================ -->
-              <button class="btn btn-delete align-text-bottom" (click)="deleteBookById(book.id, book.tipo_livro)"></button>
+              <button class="btn btn-delete align-text-bottom"
+                (click)="deleteBookById(book.id, book.tipo_livro)"></button>
 
 
 
@@ -71,10 +72,10 @@
 
                 </div>
 
-               
-                  <h6 class="card-title">{{book.titulo}}</h6>
 
-              
+                <h6 class="card-title">{{book.titulo}}</h6>
+
+
                 <p class="card-text">{{book.autor}}</p>
                 <a (click)="getBookById(book.id)" class="btn btn-primary btn-more w-100">Ver mais</a>
 
@@ -131,143 +132,3 @@
   </div>
 </div>
 
-<!-- =====================MODAL DELETAR================================= -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true"
-  *ngFor="let book of bookShelf$ |async">
-  <div class="modal-dialog modal-delete">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h4 class="text-center">Deseja mesmo excluir esse livro?</h4>
-        <div class="d-flex w-100 mt-3">
-          <button class="btn btn-outline-secondary w-50 mx-3" data-bs-dismiss="modal" aria-label="Close"
-            type="button">Cancelar</button>
-          <button class="btn btn btn-danger w-50" (click)="deleteBookById(book.id, book.tipo_livro)"
-            data-bs-dismiss="modal" aria-label="Close" type="button">Excluir</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================MODAL EDITAR================================= -->
-<div class="modal fade" id="exampleModal" *ngIf="put$ as book" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-edit modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="post" #frm="ngForm" (ngSubmit)="putBook(frm, book.tipo_livro)" class="mt-4">
-          <div>
-            <div class="d-flex">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Titulo:</label>
-              <input id="titulo" name="titulo" type="text" placeholder="titulo" class="w-100" [(ngModel)]="book.titulo"
-                class="w-100 form-control" />
-            </div>
-          </div>
-          <div class="mt-3 d-flex">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Subtitulo:</label>
-            <input id="subtitulo" name="subtitulo" type="text" placeholder="subtitulo" [(ngModel)]="book.subtitulo"
-              class="w-100 form-control" />
-          </div>
-          <div class="mt-3 d-flex">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Autor:</label>
-            <input id="autor" name="autor" type="text" placeholder="autor" [(ngModel)]="book.autor"
-              class="w-100 form-control" />
-          </div>
-          <div class="mt-3 d-flex">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Link da foto:</label>
-            <input id="foto" name="foto" type="text" placeholder="link foto" [(ngModel)]="book.foto"
-              class="w-100 form-control" />
-          </div>
-          <div class="d-flex w-100 mt-3">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Ano:</label>
-            <input id="ano" name="ano" type="text" placeholder="ano" class="w-100 form-control me-3"
-              [(ngModel)]="book.ano" />
-            <label for="staticEmail" class="col-sm-1 col-form-label">Genero:</label>
-            <input id="genero" name="genero" type="text" placeholder="genero" class="w-100 form-control me-3"
-              [(ngModel)]="book.genero" />
-            <label for="staticEmail" class="col-sm-2 col-form-label">Subgenero:</label>
-            <input id="subgenero" name="subgenero" type="text" placeholder="subgenero" class="w-100 form-control"
-              [(ngModel)]="book.subgenero" />
-          </div>
-          <div class="d-flex w-100 mt-3">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Idioma:</label>
-            <input id="idioma" name="idioma" type="text" placeholder="idioma" [(ngModel)]="book.idioma"
-              class="w-100 form-control me-3" />
-            <label for="staticEmail" class="col-sm-2 col-form-label">Cidade:</label>
-            <input id="cidade" name="cidade" type="text" placeholder="cidade" [(ngModel)]="book.cidade"
-              class="w-100 form-control " />
-          </div>
-
-          <div class="d-flex w-100 mt-3">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Já li?</label>
-            <input id="lido" name="lido" type="text" placeholder="Já li?" [(ngModel)]="book.lido"
-              class="w-100 form-control me-3" />
-            <label for="staticEmail" class="col-sm-2 col-form-label">Livro nacional?</label>
-            <input id="nacional" name="nacional" type="text" placeholder="livro nacional?" [(ngModel)]="book.nacional"
-              class="w-100 form-control" />
-          </div>
-
-
-
-
-          <div *ngIf="book.tipo_livro != 'teses' ">
-            <div class="d-flex w-100 mt-3">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cidade:</label>
-              <input id="edicao" name="edicao" type="text" placeholder="edicao" class="w-100 form-control me-3"
-                [(ngModel)]="book.edicao" />
-              <label for="staticEmail" class="col-sm-2 col-form-label">Editora:</label>
-              <input id="editora" name="editora" type="text" placeholder="editora" class="w-100 form-control"
-                [(ngModel)]="book.editora" />
-            </div>
-          </div>
-
-          <div *ngIf="book.tipo_livro == 'kindle' || 'pdf' ">
-            <div class="d-flex w-100 mt-3">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Tenho Fisico:</label>
-              <input id="fisico" name="fisico" type="text" placeholder="tenho fisico?" class="w-100 form-control"
-                [(ngModel)]="book.fisico" />
-            </div>
-          </div>
-
-          <div *ngIf="book.tipo_livro == 'pdf' || 'teses'">
-            <div class="d-flex w-100 mt-3">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cidade:</label>
-              <input id="pasta" name="pasta" type="text" placeholder="pasta" class="w-100 form-control"
-                [(ngModel)]="book.pasta" />
-            </div>
-          </div>
-
-          <div *ngIf="book.tipo_livro == 'pdf'">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Pasta:</label>
-            <input id="kindle" name="kindle" type="text" placeholder="tenho kindle?" class="w-100 form-control mt-3"
-              [(ngModel)]="book.kindle" />
-          </div>
-
-          <div *ngIf="book.tipo_livro == 'teses'">
-            <div class="mt-3">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cidade:</label>
-              <input id="instituicao" name="instituicao" type="text" class="w-100 form-control "
-                placeholder="instituição" [(ngModel)]="book.instituicao" />
-            </div>
-            <div class="mt-3">
-              <label for="staticEmail" class="col-sm-2 col-form-label">Cidade:</label>
-              <input id="tipo" name="tipo" type="text" placeholder="tipo" class="w-100 form-control"
-                [(ngModel)]="book.tipo" />
-            </div>
-          </div>
-          <div class="d-flex w-100 justify-content-between mt-5">
-            <button type="submit" class="btn btn-outline-secondary w-25 mt-3"  data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-            <button type="submit" class="btn btn-success w-25 mt-3">Salvar Alteração</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>

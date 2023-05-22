@@ -83,22 +83,18 @@ label span:nth-child(3){
     position: fixed;
     height: 100vh;
     background-color: $color-secundary;
-   width: 20em;
+   width: 18vw;
 }
 .settings{
     cursor: pointer;
     margin-top: 4.2vh;
     margin-left: 80%;;
-    background-color: #4a81f069;
-    width: 16%;
+    width: 2.5vw;
     height: 5vh;
     padding: 7px 7px;
     border-radius: 50px;
 }
-.settings:hover{
-    transform: rotate(359deg);
-    transition: 5s;
-}
+
 .link{
     background-color: $color-secundary;
 }
@@ -172,16 +168,16 @@ p a{
 }
 
 
-@media (max-width: 1111px){
+@media (max-width: 1300px){
     .navigator{
-        width: 17em;
+        width: 20vw;
     }
 }
 
 
-@media (max-width: 896px){
+@media (max-width: 1020px){
     .navigator{
-        width: 12em;
+        width: 23vw;
     }
 }
 @media (max-width: 769px){

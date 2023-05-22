@@ -24,7 +24,8 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.photoUser === ''){
+    console.log(environment.token + "+++++++++++++++++++")
+    if (this.photoUser == ''){
       this.photoUser = "../../../assets/img-perfil.png"
     }
   }

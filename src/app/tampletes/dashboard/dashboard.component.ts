@@ -49,21 +49,48 @@ export class DashboardComponent implements OnInit {
     this.getBookById(1);
   }
 
-  getBookKindle() {
+  activeTab = 'kindle';
+
+  routerKindle(activeTab: string){
+    switch (activeTab) {
+      case'kindle':
+      this.activeTab = activeTab;
+      break
+      case'fisicos':
+      this.activeTab = activeTab;
+      break
+      case'pdf':
+      this.activeTab = activeTab;
+      break
+      case'teses':
+      this.activeTab = activeTab;
+      break
+    }
+  }
+
+  fisicos(activeTab: string){
+    this.activeTab = activeTab;
+  }
+
+  getBookKindle(kindle: string) {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfKindle));
     this.navActive$=true
+    this.routerKindle(kindle)
   }
 
-  getBookFisics() {
+  getBookFisics(fisicos: string) {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfFisic));
+    this.routerKindle(fisicos)
   }
 
-  getBookPdf() {
+  getBookPdf(pdf: string) {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfPdf));
+    this.routerKindle(pdf)
   }
 
-  getBookTeses() {
+  getBookTeses(teses: string) {
     this.bookShelf$ = this.storeApp.pipe(select(selectBookShelfTeses));
+    this.routerKindle(teses)
   }
 
   deleteBookById(id: number, type: string) {

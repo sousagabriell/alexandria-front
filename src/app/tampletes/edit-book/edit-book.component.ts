@@ -35,7 +35,7 @@ export class EditBookComponent implements OnInit {
     this.getBookToEdit(this.bookType);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   putBook(frm: NgForm) {
     switch (this.bookType) {
@@ -46,6 +46,7 @@ export class EditBookComponent implements OnInit {
           this.storeApp.dispatch(getBookShelfKindle());
           frm.reset();
           this.globalAbstractService.notificationregisteredBook$ = true;
+          this.globalAbstractService.notificationMessage = "atualizado"
           if ((this.globalAbstractService.notificationregisteredBook$ = true))
             setTimeout(() => {
               this.globalAbstractService.notificationregisteredBook$ = false;
@@ -58,6 +59,7 @@ export class EditBookComponent implements OnInit {
           console.log(response);
           this.storeApp.dispatch(getBookShelfPdf());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "atualizado"
           this.globalAbstractService.notificationregisteredBook$ = true;
         });
         break;
@@ -67,6 +69,7 @@ export class EditBookComponent implements OnInit {
           console.log(response);
           this.storeApp.dispatch(getBookShelfFisic());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "atualizado"
           this.globalAbstractService.notificationregisteredBook$ = true;
         });
         break;
@@ -76,6 +79,7 @@ export class EditBookComponent implements OnInit {
           console.log(response);
           this.storeApp.dispatch(getBookShelfTeses());
           frm.reset();
+          this.globalAbstractService.notificationMessage = "atualizado"
           this.globalAbstractService.notificationregisteredBook$ = true;
         });
         break;
