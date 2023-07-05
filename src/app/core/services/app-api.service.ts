@@ -10,8 +10,8 @@ import { ConectorApiService } from './conector-api/conector-api.service';
 })
 export class AppApiService {
   header = new Array<HeaderList>();
-  username = sessionStorage.getItem('username');
-  password = sessionStorage.getItem('password');
+  username = localStorage.getItem('username');
+  password = localStorage.getItem('password');
   autenticator: HeaderList = {
     value: 'Basic ' + btoa(this.username + ':' + this.password),
     label: 'Authorization',

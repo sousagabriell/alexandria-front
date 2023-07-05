@@ -22,14 +22,14 @@ export class AuthenticationServiceService {
 
     return this.httpApi.postApiByHttpClient('/usuarios/logar', userLogin).pipe(
       map((userData) => {
-        sessionStorage.setItem('username', username);
-        sessionStorage.setItem('password', password);
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
         return userData;
       })
     );
   }
 
   logOut() {
-    sessionStorage.removeItem('username');
+    localStorage.removeItem('username');
   }
 }

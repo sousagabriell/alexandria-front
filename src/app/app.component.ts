@@ -25,11 +25,14 @@ export class AppComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(localStorage.getItem('visibleSidebar') == 'true'){
+      this.globalAbstractService.noSidebar=true
+    }
     this.storeApp.dispatch(getBookShelfKindle());
     this.storeApp.dispatch(getBookShelfFisic());
     this.storeApp.dispatch(getBookShelfPdf());
     this.storeApp.dispatch(getBookShelfTeses());
   }
+
 }
-    
 

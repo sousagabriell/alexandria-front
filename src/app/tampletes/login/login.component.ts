@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       this.globalAbstractService.noSidebar=true;
     })
     this.errorLogin()
+    localStorage.setItem('visibleSidebar', 'true');
   }
 
   errorLogin() {
