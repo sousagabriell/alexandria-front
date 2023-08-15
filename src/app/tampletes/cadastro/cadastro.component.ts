@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/core/services/authentication-service.service';
 import {  FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -14,12 +15,14 @@ export class CadastroComponent implements OnInit {
   users$: any;
   errorSignUpMessage: string = "";
   form!: FormGroup
+  currentStep: number = 1;
 
 
   constructor(
     private authenticationServiceService:AuthenticationServiceService,
     private router:Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private globalAbstractService: GlobalAbstractsService
 
   ) { }
 
@@ -33,7 +36,15 @@ export class CadastroComponent implements OnInit {
       password: ['', [Validators.required]],
       confirmpassword: ['', [Validators.required]]
     });
-    
+    this.globalAbstractService.noSideBarOnInit()
+  }
+
+  nextStep(): void {
+    this.currentStep += 1;
+  }
+
+  previousStep(): void {
+    this.currentStep -= 1;
   }
 
   postUser(){

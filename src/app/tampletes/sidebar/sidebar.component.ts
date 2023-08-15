@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment.prod';
 import { Router } from '@angular/router';
+import { GlobalAbstractsService } from 'src/app/shared/abstracts/global-abstracts.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,7 @@ export class SidebarComponent implements OnInit {
 
   opened = false;
 
-  toggleSidebar(){
+  toggleSidebar() {
     this.opened = !this.opened;
   }
 
@@ -21,10 +22,18 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private globalAbstractService: GlobalAbstractsService
   ) { }
 
   ngOnInit(): void {
-    if (this.photoUser == ''){
+    if (localStorage.getItem('visibleSidebar') == 'true') {
+      if (this.nameUser == "") {
+        this.nicknameUser = localStorage.getItem('username') ?? '';
+        this.nameUser = localStorage.getItem('name') ?? '';
+        this.photoUser = localStorage.getItem('photo') ?? '';
+      }
+    }
+    if (this.photoUser == '') {
       this.photoUser = "../../../assets/img-perfil.png"
     }
   }

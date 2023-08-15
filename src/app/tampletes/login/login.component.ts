@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     this.authenticationServiceService.authenticate(this.username, this.password).subscribe((resp: UserLogin) => {
       this.userLogin = resp
+      localStorage.setItem('photo', resp.foto);
+      localStorage.setItem('name', resp.nome);
+      localStorage.setItem('username', resp.usuario);
+      localStorage.setItem('password', resp.senha);
       environment.token = this.userLogin.token
       environment.foto = this.userLogin.foto
       environment.nome = this.userLogin.nome

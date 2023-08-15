@@ -12,7 +12,6 @@ import { getBookShelfKindle, getBookShelfFisic, getBookShelfPdf, getBookShelfTes
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
   title = 'alexandria';
   books$!: Observable<any>;
 

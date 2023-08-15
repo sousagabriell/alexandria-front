@@ -22,8 +22,6 @@ export class AuthenticationServiceService {
 
     return this.httpApi.postApiByHttpClient('/usuarios/logar', userLogin).pipe(
       map((userData) => {
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
         return userData;
       })
     );

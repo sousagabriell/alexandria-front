@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks()
-    this.getBookById(1);
+    this.getBookById(0);
   }
 
   getBooks() {
@@ -136,7 +136,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getBookByTitulo(titulo: string) {
-    this.bookById$ = this.bookShelf$.pipe(
+    this.bookById$= this.bookShelf$.pipe(
       switchMap((bookShelf) => {
         return bookShelf.filter((book) => book.titulo == titulo);
       })
@@ -178,5 +178,49 @@ export class DashboardComponent implements OnInit {
         });
         break;
     }
+  }
+
+  copyText(autor?:string, titulo?:string, subtitulo?:string, edicao?:string, cidade?:string, editora?:string, ano?:string) {
+    const formattedAutor = autor ?? '';
+    const formattedTitulo = titulo ?? '';
+    const formattedSubtitulo = subtitulo ?? '';
+    const formattedCidade = cidade ?? '';
+    const formattedEditora = editora ?? '';
+    const formattedText = `${this.formatAuthorName(formattedAutor)}. ${this.formatCamelCase(formattedTitulo)}: ${this.formatCamelCase(formattedSubtitulo)}.${edicao}ª ed. ${this.formatCamelCase(formattedCidade)}: ${this.formatCamelCase(formattedEditora)}, ${ano}`;
+    this.copyToClipboard(formattedText);
+  }
+
+  formatCamelCase(value: string) {
+    const words = value.split(' ');
+    const capitalizedWords = words.map((word) => {
+      const firstChar = word.charAt(0).toUpperCase();
+      const rest = word.slice(1).toLowerCase();
+      return firstChar + rest;
+    });
+    const formatText = capitalizedWords.join(' ');
+    return formatText;
+  }
+
+  formatAuthorName(authorName: string): string {
+    const names = authorName.split(' ');
+    const lastName = names.pop();
+    let firstName = names.join(' ');
+    if (lastName) {
+      firstName = firstName.replace(/\b\w/g, (match) => match.toLowerCase());
+      firstName = firstName.replace(/\b\w/g, (match) => match.charAt(0).toUpperCase() + match.slice(1));
+      firstName = firstName.replace(/\s+/g, ' ');
+      return `${lastName.toUpperCase()}, ${firstName}`;
+    } else {
+      return authorName;
+    }
+  }
+  
+  copyToClipboard(text: string) {
+    const textField = document.createElement('textarea');
+    textField.innerText = text;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
   }
 }

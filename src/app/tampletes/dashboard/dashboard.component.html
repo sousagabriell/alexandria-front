@@ -27,9 +27,9 @@
         <h2 class="my-3">Seus Livros</h2>
       </div>
       <div class="search-box">
-        <input #mySearch name="filtro" type="text" class="search-text" placeholder="Pesquisar..." [(ngModel)]="filtro"
+        <input #mySearch  [ngModel]="this.filtro" type="text" class="search-text" placeholder="Pesquisar..." [(ngModel)]="filtro"
           id="filtro">
-        <a class="search-btn" (click)="getBookByTitulo(filtro)">
+        <a class="search-btn" (click)="getBookByTitulo(this.filtro)">
           <img src="../../../assets/icons/search1.png" alt="" class="loupe-blue">
           <img src="../../../assets/icons/search.png" alt="" class="loupe-white">
         </a>
@@ -96,15 +96,20 @@
       </div>
     </div>
   </div>
+  <div class="col-md-3 position sobre">
+    <h3 class="text-center mt-4">Sobre o Livro</h3>
 
-  <div class="col-md-3 position sobre" *ngIf="bookById$ |async as book">
-
+  <div  *ngIf="bookById$ |async as book">
     <h3 class="text-center my-4">Sobre o Livro</h3>
     <div class="image-about text-center">
       <img src="{{book.foto}}" class="card-img-top" alt="...">
     </div>
     <h4 class="text-center mt-4 mb-2 text-white">{{book.titulo}}</h4>
     <p class="text-center text-white">{{book.autor}}</p>
+    <button class="btn btn-secondary" type="button" id="button-addon2"  (click)="copyText(book.autor, book.titulo, book.subtitulo, book.edicao, book.cidade, book.editora, book.ano)">
+      <img src="../assets/copia.png" alt="">
+      Copy
+    </button>
     <div class="ficha">
       <h6 class="mt-4 mb-3 text-white">Subtitulo: {{book.subtitulo}}</h6>
       <h6 class="mb-3 text-white">Cidade: {{book.cidade}}</h6>
@@ -130,5 +135,8 @@
       </div>
     </div>
   </div>
+
 </div>
+</div>
+  
 
