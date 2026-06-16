@@ -1,91 +1,320 @@
-$color-primary:#4a80f0;
-$color-secundary: #1a1a23;
-$color-tercery: #fdfdfd;
+// ============================================
+// ALEXANDRIA — DESIGN SYSTEM v2
+// Dark Premium Library · Gold Accent
+// ============================================
 
-@import url('http://fonts.cdnfonts.com/css/lato');
-@import url('http://fonts.cdnfonts.com/css/tt-norms-pro');
-
-body{
-    background-color: #dddddd;
+:root {
+  --alex-bg:           #09080E;
+  --alex-surface:      #0F0E1A;
+  --alex-surface-2:    #181628;
+  --alex-surface-3:    #21203A;
+  --alex-gold:         #C9A84C;
+  --alex-gold-light:   #DFBE6B;
+  --alex-gold-dim:     rgba(201, 168, 76, 0.13);
+  --alex-gold-border:  rgba(201, 168, 76, 0.28);
+  --alex-violet:       #7C6FCD;
+  --alex-violet-dim:   rgba(124, 111, 205, 0.12);
+  --alex-text:         #EDE8DF;
+  --alex-text-2:       #9B9388;
+  --alex-text-3:       #5E5A54;
+  --alex-border:       rgba(255, 255, 255, 0.065);
+  --alex-glass:        rgba(255, 255, 255, 0.03);
+  --alex-glass-hover:  rgba(255, 255, 255, 0.06);
+  --alex-read:         #34D399;
+  --alex-read-bg:      rgba(52, 211, 153, 0.11);
+  --alex-unread:       #FBBF24;
+  --alex-unread-bg:    rgba(251, 191, 36, 0.11);
+  --alex-danger:       #F87171;
+  --alex-danger-bg:    rgba(248, 113, 113, 0.11);
+  --alex-shadow:       0 8px 32px rgba(0, 0, 0, 0.5);
+  --alex-radius:       10px;
+  --alex-radius-lg:    16px;
+  --alex-radius-xl:    24px;
+  --alex-transition:   all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-width:     240px;
 }
 
-h3{
-    color: #fdfdfd;
-    font-family: 'TT Norms Pro', sans-serif;
-    font-weight: 700 !important;
+// ============================================
+// BASE RESET
+// ============================================
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--alex-bg);
+  color: var(--alex-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
-h2{
-    font-family: 'TT Norms Pro', sans-serif;
-    font-weight: 800 !important;
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  color: var(--alex-text) !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
 }
-h4{
-    font-family: 'Lato', sans-serif;
-    font-weight: 300 !important;
+
+h4, h5, h6 {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--alex-text) !important;
+  font-weight: 600 !important;
 }
-p{
-    font-family: 'Lato', sans-serif;
-    font-weight: 300 !important;
+
+p {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--alex-text-2) !important;
+  font-weight: 400 !important;
+  margin-bottom: 0.75rem;
 }
-label{
-    font-family: 'Lato', sans-serif;
-    font-weight: 800 !important;
-    font-size: 1.2rem !important;
+
+label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.83rem !important;
+  color: var(--alex-text-2) !important;
+  margin-bottom: 0.4rem;
 }
-.col-md-6{
-    padding: 0!important;
+
+a {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  color: var(--alex-gold) !important;
+  transition: var(--alex-transition);
+  &:hover { color: var(--alex-gold-light) !important; }
 }
-a{
-    font-family: 'TT Norms Pro', sans-serif;
-    font-weight: 800 !important;
-    text-decoration: none !important;
-    color: $color-primary;
+
+hr {
+  border-color: var(--alex-border) !important;
+  opacity: 1 !important;
 }
-hr{
-    border-top: 1px solid #3a3a3a !important;
+
+// ============================================
+// BOOTSTRAP GRID RESET
+// ============================================
+.row { --bs-gutter-x: 0 !important; }
+.row > * { padding-right: 0 !important; padding-left: 0 !important; }
+.container-fluid { padding: 0 !important; }
+.col-md-6 { padding: 0 !important; }
+
+// ============================================
+// NAV
+// ============================================
+.nav-link {
+  cursor: pointer;
+  color: var(--alex-text-3) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+  font-size: 0.88rem;
+  transition: var(--alex-transition);
+  padding: 0.6rem 1.1rem !important;
+  border-radius: var(--alex-radius);
+  &:hover { color: var(--alex-gold) !important; background: var(--alex-gold-dim); }
+  &.active {
+    color: var(--alex-gold) !important;
+    background: var(--alex-gold-dim) !important;
+    border-bottom: 2px solid var(--alex-gold) !important;
+  }
 }
-.btn-primario{
-    
-    padding: 4%;
-    background-color: $color-primary !important;
-    width: 5em;
-    color: #f0f0f0 !important;
-    border-radius: 30px;
-    @media screen and (max-width: 767px){
-        width: 100%;
-        padding: 2%;
-    }
+
+// ============================================
+// FORMS
+// ============================================
+.form-control {
+  background-color: var(--alex-surface-2) !important;
+  border: 1px solid var(--alex-border) !important;
+  border-radius: var(--alex-radius) !important;
+  color: var(--alex-text) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  height: auto !important;
+  transition: var(--alex-transition);
+
+  &::placeholder { color: var(--alex-text-3); }
+
+  &:focus {
+    background-color: var(--alex-surface-3) !important;
+    border-color: var(--alex-gold) !important;
+    box-shadow: 0 0 0 3px var(--alex-gold-dim) !important;
+    color: var(--alex-text) !important;
+    outline: none;
+  }
 }
-.form-invalid{
-    color: #F21502;
-    font-size: 0.9em;
-    margin: 0 !important;
+
+// ============================================
+// BUTTONS
+// ============================================
+.btn-primario {
+  background: linear-gradient(135deg, #C9A84C 0%, #9B7A28 100%);
+  color: #09080E !important;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: var(--alex-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.38);
+    color: #09080E !important;
+  }
+  &:active { transform: translateY(0); }
+  &:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; }
+
+  @media (max-width: 767px) { width: 100%; padding: 0.7rem 1rem; }
 }
-label{
-    font-family: 'Roboto' !important;
-    font-weight: 300 !important;
-    font-size: 1em !important;
+
+.btn-outline-secondary {
+  border: 1px solid var(--alex-border) !important;
+  color: var(--alex-text-2) !important;
+  background: transparent !important;
+  border-radius: 50px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.88rem;
+  transition: var(--alex-transition) !important;
+
+  &:hover {
+    border-color: var(--alex-gold) !important;
+    color: var(--alex-gold) !important;
+    background: var(--alex-gold-dim) !important;
+  }
 }
-.color-primary{
-    background-color: $color-primary;
+
+.btn-primary {
+  background-color: var(--alex-surface-3) !important;
+  border: 1px solid var(--alex-border) !important;
+  color: var(--alex-text) !important;
+  border-radius: var(--alex-radius) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  transition: var(--alex-transition) !important;
+
+  &:hover {
+    background-color: var(--alex-surface-2) !important;
+    border-color: var(--alex-gold-border) !important;
+    color: var(--alex-gold) !important;
+  }
 }
-h6{
-    font-family: 'TT Norms Pro', sans-serif;
-    font-weight: 600 !important;
+
+.btn-secondary {
+  background-color: var(--alex-surface-2) !important;
+  border: 1px solid var(--alex-border) !important;
+  color: var(--alex-text-2) !important;
+  border-radius: var(--alex-radius) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  transition: var(--alex-transition) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &:hover {
+    background-color: var(--alex-surface-3) !important;
+    border-color: var(--alex-gold-border) !important;
+    color: var(--alex-gold) !important;
+  }
 }
-.row>*{
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+
+// ============================================
+// STATUS BADGES
+// ============================================
+.read {
+  background: var(--alex-read-bg) !important;
+  color: var(--alex-read) !important;
+  border: 1px solid rgba(52, 211, 153, 0.22) !important;
+  border-radius: 50px !important;
+  padding: 3px 10px !important;
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.4;
 }
-.row{
-    --bs-gutter-x: 0 !important;
+
+.no-read {
+  background: var(--alex-unread-bg) !important;
+  color: var(--alex-unread) !important;
+  border: 1px solid rgba(251, 191, 36, 0.22) !important;
+  border-radius: 50px !important;
+  padding: 3px 10px !important;
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.4;
 }
-.position{
-    position: sticky;
+
+// ============================================
+// GLASS UTIL
+// ============================================
+.glass {
+  background: var(--alex-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--alex-border);
 }
-.nav-link{
-    cursor: pointer;
-    color: #888888 !important;
+
+// ============================================
+// FORM ERRORS
+// ============================================
+.form-invalid {
+  color: var(--alex-danger) !important;
+  font-size: 0.78rem;
+  font-family: 'Inter', sans-serif;
+  margin-top: 4px;
+  display: block;
 }
-.container-fluid{
-    padding-left: -0% !important;
+
+// ============================================
+// SCROLLBAR
+// ============================================
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--alex-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--alex-surface-3);
+  border-radius: 3px;
+  &:hover { background: var(--alex-text-3); }
+}
+
+// ============================================
+// HELPERS
+// ============================================
+.position { position: sticky; top: 0; }
+.color-primary { background-color: var(--alex-gold); }
+
+// ============================================
+// APP SHELL — força fundo escuro em toda a app
+// ============================================
+app-root,
+app-root > div,
+app-root .row {
+  background-color: var(--alex-bg);
+  min-height: 100vh;
+}
+
+// ng-sidebar library override global
+.ng-sidebar__content {
+  background-color: var(--alex-bg) !important;
+}
+ng-sidebar-container {
+  background-color: var(--alex-bg) !important;
 }

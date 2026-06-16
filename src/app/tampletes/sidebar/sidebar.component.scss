@@ -1,190 +1,316 @@
-$color-primary:#4a80f0;
-$color-secundary: #14203b;
-$color-tercery: #fdfdfd;
+// ============================================
+// SIDEBAR — Desktop & Mobile
+// ============================================
 
-#checkbox-menu{
-    position: absolute;
-    opacity: 0;
-}
-label{
-    cursor: pointer;
-    position: relative;
-    display: block;
-    height: 22px;
-    width: 30px;
-}
+// ---- Hamburger button (state driven by Angular [class.is-open]) ----
+.hamburger-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 26px;
+  height: 20px;
+  padding: 0;
+  flex-shrink: 0;
 
-label span{
+  span {
     position: absolute;
+    left: 0;
     display: block;
-    height: 5px;
+    height: 2px;
     width: 100%;
-    border-radius: 30px;
-    background: #707070;
-    transition: 0.4s ease-in-out;
+    border-radius: 2px;
+    background: var(--alex-text-2);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+
+    &:nth-child(1) { top: 0; }
+    &:nth-child(2) { top: 9px; }
+    &:nth-child(3) { top: 18px; }
+  }
+
+  &.is-open span:nth-child(1) { transform: rotate(-45deg); top: 9px; }
+  &.is-open span:nth-child(2) { opacity: 0; }
+  &.is-open span:nth-child(3) { transform: rotate(45deg); top: 9px; }
 }
 
-label span:nth-child(1){
-    top:0
-}
-label span:nth-child(2){
-    top:8px
-}
-label span:nth-child(3){
-    top:16px
+// ---- Drawer close X button ----
+.drawer-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--alex-text-3);
+  padding: 6px;
+  border-radius: var(--alex-radius);
+  transition: var(--alex-transition);
+  line-height: 0;
+
+  &:hover { color: var(--alex-text); background: var(--alex-glass-hover); }
 }
 
-#checkbox-menu:checked + label span:nth-child(1){
-    transform:rotate(-45deg);
-    top: 8px;
+// ---- Mobile top bar ----
+.mobile-topbar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+  background-color: var(--alex-surface);
+  border-bottom: 1px solid var(--alex-border);
+  padding: 0 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 769px) { display: flex; }
 }
 
-#checkbox-menu:checked + label span:nth-child(2){
-    opacity: 0;
+.topbar-logo {
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1) opacity(0.85);
 }
 
-#checkbox-menu:checked + label span:nth-child(3){
-    transform:rotate(45deg);
-    top: 8px;
+// ---- Desktop navigator (fixed left column) ----
+.navigator {
+  position: fixed;
+  height: 100vh;
+  width: var(--sidebar-width) !important;
+  background-color: var(--alex-surface);
+  border-right: 1px solid var(--alex-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+
+  @media (max-width: 1300px) { width: 220px !important; }
+  @media (max-width: 1020px) { width: 200px !important; }
+  @media (max-width: 769px)  { display: none; }
 }
 
-.menu-hamburguer{
+// ---- Profile section ----
+.sidebar-profile {
+  padding: 2rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    height: 10vh;
-    z-index: 1;
-    background: #1a1a23;
-    top: 0;
-    display: none !important;
+.avatar-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--alex-gold), var(--alex-violet));
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--alex-surface);
+}
+
+.profile-name {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--alex-text) !important;
+  margin-bottom: 2px !important;
+}
+
+.profile-nick {
+  font-size: 0.75rem !important;
+  color: var(--alex-text-3) !important;
+  margin-bottom: 0 !important;
+}
+
+// ---- Divider ----
+.sidebar-divider {
+  margin: 0.5rem 1.2rem;
+  border-color: var(--alex-border) !important;
+  opacity: 1 !important;
+}
+
+// ---- Nav items ----
+.sidebar-nav {
+  padding: 0.5rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem !important;
+  border-radius: var(--alex-radius);
+  color: var(--alex-text-2) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: var(--alex-transition);
+  cursor: pointer;
+
+  svg { flex-shrink: 0; opacity: 0.7; transition: var(--alex-transition); }
+
+  &:hover {
+    background: var(--alex-glass-hover);
+    color: var(--alex-text) !important;
+    svg { opacity: 1; color: var(--alex-gold); }
+  }
+
+  &.active, &.active-link {
+    background: var(--alex-gold-dim);
+    color: var(--alex-gold) !important;
+    svg { opacity: 1; color: var(--alex-gold); }
+  }
+}
+
+.logout-item {
+  margin: 0 0.75rem 0.5rem;
+  color: var(--alex-text-3) !important;
+
+  &:hover {
+    background: var(--alex-danger-bg) !important;
+    color: var(--alex-danger) !important;
+    svg { color: var(--alex-danger); }
+  }
+}
+
+// ---- Bottom logo ----
+.sidebar-logo {
+  padding: 1rem 1.2rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-logo-img {
+  width: 60%;
+  opacity: 0.35;
+  filter: brightness(0) invert(1);
+}
+
+// ---- ng-sidebar library overrides ----
+::ng-deep .ng-sidebar {
+  background-color: var(--alex-surface) !important;
+  width: 280px !important;
+  border-right: 1px solid var(--alex-border) !important;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.5) !important;
+}
+
+::ng-deep .ng-sidebar__content {
+  background-color: var(--alex-bg) !important;
+}
+
+::ng-deep ng-sidebar-container {
+  background-color: var(--alex-bg) !important;
+}
+
+// Mobile: force ng-sidebar to render as fixed overlay drawer
+@media (max-width: 769px) {
+  ::ng-deep ng-sidebar-container {
+    display: block !important;
+    position: relative !important;
+  }
+
+  ::ng-deep .ng-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 1050 !important;
+  }
+}
+
+.drawer-content {
+  padding: 1.5rem 1.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-close {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--alex-gold-border);
+  margin-bottom: 0.6rem;
+}
+
+.drawer-name {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--alex-text) !important;
+  margin-bottom: 2px !important;
+}
+
+.drawer-nick {
+  font-size: 0.75rem !important;
+  color: var(--alex-text-3) !important;
+  margin-bottom: 0 !important;
+}
+
+.drawer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  li a {
+    display: flex;
     align-items: center;
-    padding: 0 7%;
-    width: 100%;
-}
-
-.pesquisa-bar{
-    width: 100%;
-    background-color: #1a1a23;
-    height: 5vh;
-}
-.icon-nav label{
-    margin-right: 4% ;
-}
-.dropdown-menu{
-    width: 20em;
-    padding: 10px;
-}
-
- li{
-    border:none
- }
- .list{
-    padding-left: 0.5em;
- }
- .navigator{
-    position: fixed;
-    height: 100vh;
-    background-color: $color-secundary;
-   width: 18vw;
-}
-.settings{
+    gap: 0.65rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: var(--alex-radius);
+    color: var(--alex-text-2) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: var(--alex-transition);
     cursor: pointer;
-    margin-top: 4.2vh;
-    margin-left: 80%;;
-    width: 2.5vw;
-    height: 5vh;
-    padding: 7px 7px;
-    border-radius: 50px;
-}
 
-.link{
-    background-color: $color-secundary;
-}
-.link img{
-    cursor: pointer;
-}
+    svg { flex-shrink: 0; opacity: 0.7; }
 
-.link a{
-    text-decoration: none;
-    margin-left: 10px;
-    font-family: 'Poppins', sans-serif;
-    color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
-    
-}
-.link a:hover{
-    border-bottom: 2px solid $color-primary;
-}
-
-
-
-::ng-deep .ng-sidebar{
-    background-color: #fff;
-    width: 20em;
-    border-right: 2px solid #000;
-    height: 100vh;
-    border-radius: 10px;
-}
-
-.modal-login{
-    background-color: #0F1D38;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-}
-.modal-header{
-    border: none;
-}
-.chamada{
-    width: 80%;
-    margin: 0 auto;
-}
-.button{
-    background-color: #FF006E;
-    width: 8em;
-    border-radius: 7px;
-    height: 3em;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-}
-input{
-    background-color: #1a1a23;
-    height: 8vh;
-    border-radius: 8px;
-    border: 1px solid #fff;
-    color: #fff;
-}
-hr{
-    border:2px solid #fff;
-    margin: 0 auto;
-}
-h6{
-    font-family: 'Poppins', sans-serif;
-}
-p a{
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-@media (max-width: 1300px){
-    .navigator{
-        width: 20vw;
+    &:hover {
+      background: var(--alex-glass-hover);
+      color: var(--alex-text) !important;
+      svg { opacity: 1; }
     }
+
+    &.active {
+      background: var(--alex-gold-dim);
+      color: var(--alex-gold) !important;
+      svg { opacity: 1; }
+    }
+  }
 }
 
-
-@media (max-width: 1020px){
-    .navigator{
-        width: 23vw;
-    }
-}
-@media (max-width: 769px){
-    .menu-hamburguer{
-        display: flex !important;
-        justify-content: space-between;
-    }
-    .navigator{
-        display: none;
-    }
-    ng-sidebar-container{
-        position: absolute;
-        overflow: hidden;
-    }
+.logout-link {
+  color: var(--alex-text-3) !important;
+  &:hover { color: var(--alex-danger) !important; }
 }

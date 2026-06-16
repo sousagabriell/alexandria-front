@@ -42,11 +42,14 @@ export class DashboardComponent implements OnInit {
   filtro: any;
   put$: any;
   navActive$: boolean = false;
-  nameUser: string = environment.nome
-
+  nameUser: string = environment.nome;
+  panelOpen: boolean = false;
 
   ngOnInit(): void {
-    this.getBooks()
+    if (!this.nameUser) {
+      this.nameUser = localStorage.getItem('name') ?? '';
+    }
+    this.getBooks();
     this.getBookById(0);
   }
 
@@ -128,11 +131,16 @@ export class DashboardComponent implements OnInit {
   }
 
   getBookById(id: number) {
+    this.panelOpen = id !== 0;
     this.bookById$ = this.bookShelf$.pipe(
       switchMap((bookShelf) => {
         return bookShelf.filter((book) => book.id == id);
       })
     );
+  }
+
+  closeMobilePanel() {
+    this.panelOpen = false;
   }
 
   getBookByTitulo(titulo: string) {

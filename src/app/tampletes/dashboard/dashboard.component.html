@@ -1,142 +1,232 @@
-<div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-6 position">
+<div class="row dash-layout">
+
+  <!-- Sidebar placeholder -->
+  <div class="col-md-3 sidebar-space"></div>
+
+  <!-- Main content -->
+  <div class="col-md-6 dash-main">
     <app-notificacoes></app-notificacoes>
-    <h2 class="my-4">Bem-Vindo, {{nameUser}}</h2>
 
+    <!-- Header -->
+    <div class="dash-header">
+      <div>
+        <p class="welcome-pre">Bem-vindo de volta,</p>
+        <h2 class="welcome-name">{{nameUser}}</h2>
+      </div>
+      <div class="header-actions">
+        <!-- Search -->
+        <div class="search-box">
+          <input #mySearch [ngModel]="this.filtro" type="text" class="search-input"
+            placeholder="Pesquisar livros..." [(ngModel)]="filtro" id="filtro">
+          <button class="search-btn" (click)="getBookByTitulo(this.filtro)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+              <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
 
-
-    <ul class="nav nav-tabs navigator" id="tabs">
-      <li class="nav-item">
-        <a class="nav-link active" (click)="getBookKindle('kindle')" [ngClass]="{ 'active':activeTab==='kindle'}" data-toggle="tab">Kindle</a>
+    <!-- Tabs -->
+    <ul class="alex-tabs" id="tabs">
+      <li>
+        <a class="alex-tab" (click)="getBookKindle('kindle')" [class.active]="activeTab==='kindle'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+            <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"/><path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clip-rule="evenodd"/>
+          </svg>
+          Kindle
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="getBookFisics('fisicos')" [ngClass]="{ 'active':activeTab==='fisicos'}" data-toggle="tab">Fisícos</a>
+      <li>
+        <a class="alex-tab" (click)="getBookFisics('fisicos')" [class.active]="activeTab==='fisicos'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+            <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z"/>
+          </svg>
+          Físicos
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="getBookPdf('pdf')" [ngClass]="{ 'active':activeTab==='pdf'}" data-toggle="tab">Pdf</a>
+      <li>
+        <a class="alex-tab" (click)="getBookPdf('pdf')" [class.active]="activeTab==='pdf'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+            <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zm6.905 9.97a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72V18a.75.75 0 001.5 0v-4.19l1.72 1.72a.75.75 0 101.06-1.06l-3-3z" clip-rule="evenodd"/>
+            <path d="M14.25 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0016.5 7.5h-1.875a.375.375 0 01-.375-.375V5.25z"/>
+          </svg>
+          PDF
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="getBookTeses('teses')" [ngClass]="{ 'active':activeTab==='teses'}" data-toggle="tab">Teses</a>
+      <li>
+        <a class="alex-tab" (click)="getBookTeses('teses')" [class.active]="activeTab==='teses'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+            <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z"/>
+            <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z"/>
+          </svg>
+          Teses
+        </a>
       </li>
     </ul>
 
-    <div class="w-100 mt-3 d-flex justify-content-between">
-      <div class="w-50">
-        <h2 class="my-3">Seus Livros</h2>
-      </div>
-      <div class="search-box">
-        <input #mySearch  [ngModel]="this.filtro" type="text" class="search-text" placeholder="Pesquisar..." [(ngModel)]="filtro"
-          id="filtro">
-        <a class="search-btn" (click)="getBookByTitulo(this.filtro)">
-          <img src="../../../assets/icons/search1.png" alt="" class="loupe-blue">
-          <img src="../../../assets/icons/search.png" alt="" class="loupe-white">
-        </a>
-      </div>
-      <div class="filter">
-        <img src="../../../assets/icons/filter.png" alt="" height="25px">
-      </div>
+    <!-- Books section label -->
+    <div class="shelf-header">
+      <h3 class="shelf-title">Sua Estante</h3>
+      <span class="shelf-count" *ngIf="bookShelf$ | async as books">
+        {{ (bookShelf$ | async)?.length || 0 }} livro(s)
+      </span>
     </div>
 
-    <div class="tab-content " id="nav-tabContent">
-      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
-        aria-labelledby="nav-todasPostagens-tab">
-        <div class="d-block">
-          <div class="d-flex flex-wrap container">
-            <div class="card book mx-2 mt-4" style="width: 14vw;" *ngFor="let book of bookShelf$ |async">
+    <!-- Books grid -->
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel">
+        <div class="books-grid">
+          <div class="book-card" *ngFor="let book of bookShelf$ | async" (click)="getBookById(book.id)">
 
-              <!-- =======================BOTÃO DELETAR============================ -->
-              <button class="btn btn-delete align-text-bottom"
-                (click)="deleteBookById(book.id, book.tipo_livro)"></button>
+            <div class="book-cover">
+              <img [src]="book.foto" [alt]="book.titulo" class="cover-img" loading="lazy">
+              <div class="cover-gradient"></div>
 
+              <!-- Status badge -->
+              <span class="status-badge" [class.is-read]="book.lido" [class.is-unread]="!book.lido">
+                {{ book.lido ? 'Lido' : 'Não lido' }}
+              </span>
 
-
-              <div class="image">
-                <img src="{{book.foto}}" class="card-img-top" alt="...">
+              <!-- Action buttons (hover) -->
+              <div class="card-actions" (click)="$event.stopPropagation()">
+                <button class="action-btn edit-btn" title="Editar"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="setPutByBookId(book.id, book.tipo_livro)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z"/>
+                  </svg>
+                </button>
+                <button class="action-btn delete-btn" title="Excluir"
+                  (click)="deleteBookById(book.id, book.tipo_livro)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+                    <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd"/>
+                  </svg>
+                </button>
               </div>
-              <div class="card-body W-100">
-                <div class="d-flex justify-content-between">
 
-                  <p class="read" *ngIf="book.lido==true">lido</p>
-                  <p class="no-read" *ngIf="book.lido==false">não lido</p>
-
-
-                  <button class="btn btn-outline-primary btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    (click)="setPutByBookId(book.id, book.tipo_livro)">
-                    <img src="../../../assets/icons/ferramenta-lapis.png" alt="" height="17px" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal">
-
-                  </button>
-
-
-                </div>
-
-
-                <h6 class="card-title">{{book.titulo}}</h6>
-
-
-                <p class="card-text">{{book.autor}}</p>
-                <a (click)="getBookById(book.id)" class="btn btn-primary btn-more w-100">Ver mais</a>
-
-
-
+              <!-- Book info overlay -->
+              <div class="cover-info">
+                <h6 class="book-title">{{book.titulo}}</h6>
+                <p class="book-author">{{book.autor}}</p>
               </div>
             </div>
+
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-shelf" *ngIf="(bookShelf$ | async)?.length === 0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40" style="color:var(--alex-text-3);">
+            <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z"/>
+          </svg>
+          <p>Nenhum livro nesta estante ainda.</p>
+          <a routerLink='/adicionar-livro' class="btn btn-primario mt-2">Adicionar Livro</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile overlay backdrop -->
+  <div class="panel-overlay" [class.visible]="panelOpen" (click)="closeMobilePanel()"></div>
+
+  <!-- Detail Panel -->
+  <div class="col-md-3 sobre" [class.panel-open]="panelOpen">
+    <div class="detail-header">
+      <h3>Sobre o Livro</h3>
+      <button class="panel-close-btn" (click)="closeMobilePanel()" aria-label="Fechar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="detail-content" *ngIf="bookById$ | async as book">
+      <div class="detail-cover">
+        <img [src]="book.foto" [alt]="book.titulo" class="detail-img">
+      </div>
+
+      <div class="detail-body">
+        <h4 class="detail-title">{{book.titulo}}</h4>
+        <p class="detail-author">{{book.autor}}</p>
+
+        <!-- Edit / Delete actions (available in panel on all screens) -->
+        <div class="detail-actions">
+          <button class="detail-action-btn detail-edit" type="button"
+            (click)="setPutByBookId(book.id, book.tipo_livro)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+              <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z"/>
+            </svg>
+            Editar
+          </button>
+          <button class="detail-action-btn detail-delete" type="button"
+            (click)="deleteBookById(book.id, book.tipo_livro); closeMobilePanel()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+              <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd"/>
+            </svg>
+            Excluir
+          </button>
+        </div>
+
+        <button class="btn btn-secondary btn-copy" type="button"
+          (click)="copyText(book.autor, book.titulo, book.subtitulo, book.edicao, book.cidade, book.editora, book.ano)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+            <path fill-rule="evenodd" d="M17.663 3.118c.225.015.45.032.673.05C19.876 3.298 21 4.604 21 6.109v9.642a3 3 0 01-3 3V16.5c0-5.922-4.576-10.775-10.384-11.217.324-1.132 1.3-2.01 2.548-2.114.224-.019.448-.036.673-.051A3 3 0 0113.5 1.5H15a3 3 0 012.663 1.618zM12 4.5A1.5 1.5 0 0113.5 3H15a1.5 1.5 0 011.5 1.5H12z" clip-rule="evenodd"/>
+            <path d="M3 8.625c0-1.036.84-1.875 1.875-1.875h.375A3.75 3.75 0 019 10.5v1.875c0 1.036.84 1.875 1.875 1.875h1.875A3.75 3.75 0 0116.5 18v2.625c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 013 20.625V8.625z"/>
+            <path d="M10.5 10.5a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963 5.23 5.23 0 00-3.434-1.279h-1.875a.375.375 0 01-.375-.375V10.5z"/>
+          </svg>
+          Copiar Referência
+        </button>
+
+        <div class="detail-ficha">
+          <div class="ficha-item" *ngIf="book.subtitulo">
+            <span class="ficha-label">Subtítulo</span>
+            <span class="ficha-value">{{book.subtitulo}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.genero">
+            <span class="ficha-label">Gênero</span>
+            <span class="ficha-value">{{book.genero}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.subgenero">
+            <span class="ficha-label">Subgênero</span>
+            <span class="ficha-value">{{book.subgenero}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.idioma">
+            <span class="ficha-label">Idioma</span>
+            <span class="ficha-value">{{book.idioma}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.editora">
+            <span class="ficha-label">Editora</span>
+            <span class="ficha-value">{{book.editora}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.cidade">
+            <span class="ficha-label">Cidade</span>
+            <span class="ficha-value">{{book.cidade}}</span>
+          </div>
+          <div class="ficha-item" *ngIf="book.lido !== undefined">
+            <span class="ficha-label">Lido</span>
+            <span class="is-read ficha-badge" *ngIf="book.lido">Sim</span>
+            <span class="is-unread ficha-badge" *ngIf="!book.lido">Não</span>
+          </div>
+        </div>
+
+        <div class="ficha-numbers">
+          <div class="ficha-num" *ngIf="book.edicao">
+            <span class="ficha-num-label">Edição</span>
+            <span class="ficha-num-value">{{book.edicao}}</span>
+          </div>
+          <div class="ficha-num" *ngIf="book.ano">
+            <span class="ficha-num-label">Ano</span>
+            <span class="ficha-num-value">{{book.ano}}</span>
+          </div>
+          <div class="ficha-num" *ngIf="book.nacional !== undefined">
+            <span class="ficha-num-label">Nacional</span>
+            <span class="ficha-num-value">{{book.nacional ? 'Sim' : 'Não'}}</span>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
-        aria-labelledby="nav-todasPostagens-tab">
-
-      </div>
-      <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
-        aria-labelledby="nav-todasPostagens-tab">
-
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3 position sobre">
-    <h3 class="text-center mt-4">Sobre o Livro</h3>
-
-  <div  *ngIf="bookById$ |async as book">
-    <h3 class="text-center my-4">Sobre o Livro</h3>
-    <div class="image-about text-center">
-      <img src="{{book.foto}}" class="card-img-top" alt="...">
-    </div>
-    <h4 class="text-center mt-4 mb-2 text-white">{{book.titulo}}</h4>
-    <p class="text-center text-white">{{book.autor}}</p>
-    <button class="btn btn-secondary" type="button" id="button-addon2"  (click)="copyText(book.autor, book.titulo, book.subtitulo, book.edicao, book.cidade, book.editora, book.ano)">
-      <img src="../assets/copia.png" alt="">
-      Copy
-    </button>
-    <div class="ficha">
-      <h6 class="mt-4 mb-3 text-white">Subtitulo: {{book.subtitulo}}</h6>
-      <h6 class="mb-3 text-white">Cidade: {{book.cidade}}</h6>
-      <h6 class="mb-3 text-white">Editora: {{book.editora}}</h6>
-      <h6 class="mb-3 text-white">Lido: {{book.lido}}</h6>
-      <h6 class="mb-3 text-white">Gênero: {{book.genero}}</h6>
-      <h6 class="mb-3 text-white">Subgenero: {{book.subgenero}}</h6>
-      <h6 class="mb-3 text-white">Idioma: {{book.idioma}}</h6>
-      <div class="d-flex w-100 justify-content-between">
-        <div class="info-number">
-          <h6 class="text-white text-center">Edição:</h6>
-          <p class="text-white text-center">{{book.edicao}}</p>
-        </div>
-
-        <div class="info-number">
-          <h6 class="text-white text-center">Ano:</h6>
-          <p class="text-white text-center">{{book.ano}}</p>
-        </div>
-        <div class="info-number">
-          <h6 class="text-white text-center">Nacional ?</h6>
-          <p class="text-white text-center">{{book.nacional}}</p>
-        </div>
-      </div>
     </div>
   </div>
 
 </div>
-</div>
-  
-

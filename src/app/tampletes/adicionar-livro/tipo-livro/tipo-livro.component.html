@@ -1,40 +1,83 @@
 <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-9 position">
-        <div class="row mt-5">
-            <h2>ADICIONAR LIVRO KINDLE</h2>
-            <h4>Usuario, adicione mais livros a sua biblioteca.</h4>
-            <hr class="mt-4 p-1">
-            <div class="d-block">
-            <div class="d-flex w-100">
-                <button class="btn btn-primary w-50 button" (click)=" goToKindle()">
-                    <div>
-                    <img src="../../../../assets/icons/e-book.png" style="width: 20%" alt="" srcset="">
-                    <h5 class="mt-2">KINDLE</h5>
-                </div>
-                </button>
-                <button class="btn btn-primary w-50 button" (click)="goToBooksFisics()">
-                    <div>
-                    <img src="../../../../assets/icons/e-book (1).png" style="width: 20%" alt="" srcset="">
-                    <h5 class="mt-2">LIVRO FISICO</h5>
-                </div>
-                </button>
-            </div>
-            <div class="d-flex w-100 mt-5">
-                <button class="btn btn-primary w-50 button" (click)="goToPdf()">
-                    <div>
-                    <img src="../../../../assets/icons/pdf.png" style="width: 20%" alt="" srcset="">
-                    <h5 class="mt-2">PDF</h5>
-                </div>
-                </button>
-                <button class="btn btn-primary w-50 button" (click)="goToTheses()">
-                    <div>
-                    <img src="../../../../assets/icons/study.png" style="width: 20%" alt="" srcset="">
-                    <h5 class="mt-2">TESES</h5>
-                </div>
-                </button>
-            </div>
-        </div>
-        </div>
+  <div class="col-md-3"></div>
+  <div class="col-md-9 tipo-page">
+
+    <div class="tipo-header">
+      <a routerLink="/dashboard" class="page-back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd"/>
+        </svg>
+        Início
+      </a>
+      <h2 class="tipo-title">Adicionar Livro</h2>
+      <p class="tipo-sub">Escolha o formato do seu livro para continuar</p>
     </div>
+
+    <div class="tipo-grid">
+
+      <button class="tipo-card" (click)="goToKindle()">
+        <div class="tipo-icon-wrap kindle-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+            <path d="M10.5 18.75a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"/>
+            <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h5 class="tipo-name">Kindle</h5>
+        <p class="tipo-desc">E-books e leitores digitais</p>
+        <div class="tipo-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </button>
+
+      <button class="tipo-card" (click)="goToBooksFisics()">
+        <div class="tipo-icon-wrap fisico-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+            <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z"/>
+          </svg>
+        </div>
+        <h5 class="tipo-name">Físico</h5>
+        <p class="tipo-desc">Livros impressos e físicos</p>
+        <div class="tipo-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </button>
+
+      <button class="tipo-card" (click)="goToPdf()">
+        <div class="tipo-icon-wrap pdf-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+            <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 013.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 013.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 01-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875zm6.905 9.97a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72V18a.75.75 0 001.5 0v-4.19l1.72 1.72a.75.75 0 101.06-1.06l-3-3z" clip-rule="evenodd"/>
+            <path d="M14.25 5.25a5.23 5.23 0 00-1.279-3.434 9.768 9.768 0 016.963 6.963A5.23 5.23 0 0016.5 7.5h-1.875a.375.375 0 01-.375-.375V5.25z"/>
+          </svg>
+        </div>
+        <h5 class="tipo-name">PDF</h5>
+        <p class="tipo-desc">Documentos e arquivos PDF</p>
+        <div class="tipo-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </button>
+
+      <button class="tipo-card" (click)="goToTheses()">
+        <div class="tipo-icon-wrap tese-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+            <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z"/>
+            <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z"/>
+          </svg>
+        </div>
+        <h5 class="tipo-name">Teses</h5>
+        <p class="tipo-desc">Trabalhos acadêmicos e teses</p>
+        <div class="tipo-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+            <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </button>
+
+    </div>
+  </div>
 </div>

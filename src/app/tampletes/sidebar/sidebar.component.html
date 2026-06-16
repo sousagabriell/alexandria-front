@@ -1,215 +1,115 @@
 <ng-sidebar-container>
 
-    <ng-sidebar [opened]="opened">
-        <div class="mt-4 d-flex justify-content-end icon-nav">
-            <input type="checkbox" id="checkbox-menu">
-            <label for="checkbox-menu" (click)="toggleSidebar()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-        </div>
-        <div class="d-flex justify-content-start align-items-center p-3">
-            <img src="../../../assets/img-perfil.png" alt="" class="img-fluid mt-5 mb-5" style="width: 60%;">
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle btn" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Login
-                </a>
+  <!-- Mobile Drawer -->
+  <ng-sidebar [opened]="opened">
+    <div class="drawer-content">
+      <div class="drawer-close">
+        <button class="drawer-close-btn" (click)="toggleSidebar()" aria-label="Fechar menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
+      <div class="drawer-user">
+        <img src="{{photoUser}}" alt="{{nameUser}}" class="drawer-avatar">
+        <p class="drawer-name">{{nameUser}}</p>
+        <p class="drawer-nick">{{nicknameUser}}</p>
+      </div>
 
-        </div>
-
-        <ul class="list-group list-group-flush list">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Login
-            </button>
-
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="../../assets/icons/home.png" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Início
-                </li>
-            </div>
-
-
-
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Novidades
-                </li>
-            </div>
-
-
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Artistas
-                </li>
-            </div>
-
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Apoio
-                </li>
-            </div>
-
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Quem Somos
-                </li>
-            </div>
-            <div class="d-flex">
-                <li class="list-group-item">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Sobre
-                </li>
-            </div>
-            <div class="d-flex">
-                <li class="list-group-item mt-5">
-                    <img src="" alt="" srcset="" style="width: 25px; height: 25px;">
-                    Playlist
-                </li>
-            </div>
-        </ul>
-
-
-    </ng-sidebar>
-
-    <div ng-sidebar-content>
-        <div class="menu-hamburguer position-fixed d-flex">
-            <input type="checkbox" id="checkbox-menu">
-            <label for="checkbox-menu" (click)="toggleSidebar()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <h2 class="text-center ml-4">Inicio</h2>
-            <div class="dropdown">
-                <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../../../assets/icons/home.png" alt="" srcset="" style="height: 20px;">
-                </a>
-
-                <ul class="dropdown-menu mt-3 " aria-labelledby="dropdownMenuLink">
-                    <li><input type="text" class="dropdown-item form-control pesquisa-bar"></li>
-                </ul>
-            </div>
-        </div>
-
-
-
-       
-            <div class="row">
-                <div class="col-md-3 navigator">
-                    <div class="settings">
-                    <div class="bar-settings">
-                </div>
-                </div>
-                    <div class="d-flex justify-content-center mt-2 mb-3">
-                        <img src="{{photoUser}}" alt="" class="img-fluid img-settings" style="width: 50%; border-radius: 100%; height: 18vh">
-                    </div>
-                    <h4 class="text-center text-white">{{nameUser}}</h4>
-                    <p class="text-center text-white">{{nicknameUser}}</p>
-                    <hr class="w-50 mb-4">
-                    <ul class="list-group list-group-flush list">
-                        <div class="d-flex">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/home.png" alt="" srcset="" style="width: 25px; height: 25px;">
-                                <a routerLink='/dashboard' routerLinkActive="active">Início</a>
-                            </li>
-                        </div>
-
-                        <div class="d-flex">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/plus.png" alt="" srcset="" style="width: 25px; height: 25px;">
-                                <a routerLink='/adicionar-livro' routerLinkActive="active">Adicionar Livro</a>
-                            </li>
-                        </div>
-
-                        <div class="d-flex mt-1">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/escrevendo.png" alt="" srcset=""
-                                    style="width: 25px; height: 25px;">
-                                    <a routerLink="/notice" routerLinkActive="active">Anotações</a>
-                            </li>
-                        </div>
-
-
-                        <div class="d-flex">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/excel.png" alt="" srcset=""
-                                    style="width: 25px;">
-                                <a routerLink='/excel'  routerLinkActive="active">Excel</a>
-                            </li>
-                        </div>
-
-                        <div class="d-flex">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/support.png" alt="" srcset=""
-                                    style="width: 25px;">
-                                <a class="page" href="">Suporte</a>
-                            </li>
-                        </div>
-
-                        <div class="d-flex">
-                            <li class="list-group-item link">
-                                <img src="../../../assets/icons/logout.png" alt="" srcset="" style="width: 25px;">
-                                <a routerLink='/quem-somos' routerLinkActive="active" (click)="logout()">Sair</a>
-                            </li>
-                        </div>
-                    </ul>
-                    <hr class="w-50 mt-4">
-                    <div class="w-100 text-center mt-5">
-                    <img src="../../../assets/images/logo/alexandria-logo-mobile.png" alt="" width="70%">
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-</ng-sidebar-container>
-
-
-
-
-
-
-
-
-
-
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content modal-login">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body mb-4">
-                <h6 class="text-white text-center">Cadastre-se e acompanhe os principais artistas LGBTQIA+</h6>
-                <div class="p-4 mt-4">
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome"
-                        aria-describedby="basic-addon1">
-                    <input type="text" class="form-control mt-3" placeholder="Email" aria-label="Email"
-                        aria-describedby="basic-addon1">
-                        <input type="password" class="form-control mt-3 mb-2" placeholder="Senha" aria-label="Senha"
-                        aria-describedby="basic-addon1">
-                    <span class="text-white">Use seis ou mais caracteres com uma combinação de letras, números e símbolos</span>
-                    <input type="password" class="form-control mt-3" placeholder="Confirmar Senha" aria-label="Confirmar senha"
-                        aria-describedby="basic-addon1">
-                        <div class="text-center">
-                        <button type="submit" class="btn btn-primary mt-5 button">CADASTRAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <ul class="drawer-nav">
+        <li><a routerLink='/dashboard' routerLinkActive="active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"/><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"/></svg>
+          Início
+        </a></li>
+        <li><a routerLink='/adicionar-livro' routerLinkActive="active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd"/></svg>
+          Adicionar Livro
+        </a></li>
+        <li><a routerLink="/notice" routerLinkActive="active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z"/><path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z"/></svg>
+          Anotações
+        </a></li>
+        <li><a routerLink='/excel' routerLinkActive="active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"/></svg>
+          Excel
+        </a></li>
+        <li><a (click)="logout()" class="logout-link" style="cursor:pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+          Sair
+        </a></li>
+      </ul>
     </div>
-</div>
+  </ng-sidebar>
+
+  <!-- Main content -->
+  <div ng-sidebar-content>
+
+    <!-- Mobile top bar -->
+    <div class="mobile-topbar">
+      <button class="hamburger-btn" [class.is-open]="opened" (click)="toggleSidebar()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <img src="../../../assets/images/logo/alexandria-logo-mobile.png" alt="Alexandria" class="topbar-logo">
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="row">
+      <div class="col-md-3 navigator">
+
+        <!-- User Profile -->
+        <div class="sidebar-profile">
+          <div class="avatar-ring">
+            <img src="{{photoUser}}" alt="{{nameUser}}" class="avatar-img">
+          </div>
+          <h4 class="profile-name">{{nameUser}}</h4>
+          <p class="profile-nick">{{nicknameUser}}</p>
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+          <a class="nav-item" routerLink='/dashboard' routerLinkActive="active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"/><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"/></svg>
+            <span>Início</span>
+          </a>
+
+          <a class="nav-item" routerLink='/adicionar-livro' routerLinkActive="active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd"/></svg>
+            <span>Adicionar Livro</span>
+          </a>
+
+          <a class="nav-item" routerLink="/notice" routerLinkActive="active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z"/><path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z"/></svg>
+            <span>Anotações</span>
+          </a>
+
+          <a class="nav-item" routerLink='/excel' routerLinkActive="active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"/></svg>
+            <span>Excel</span>
+          </a>
+
+          <a class="nav-item" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-.777-2.366-.777-3.255 0a.75.75 0 01-.988-1.129c1.454-1.272 3.776-1.272 5.23 0 1.513 1.324 1.513 3.518 0 4.842a3.75 3.75 0 01-.837.552c-.676.328-1.028.774-1.028 1.152v.75a.75.75 0 01-1.5 0v-.75c0-1.279 1.06-2.107 1.875-2.502.182-.088.351-.199.503-.331.83-.727.83-1.857 0-2.584zM12 18a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/></svg>
+            <span>Suporte</span>
+          </a>
+        </nav>
+
+        <hr class="sidebar-divider">
+
+        <!-- Logout -->
+        <a class="nav-item logout-item" (click)="logout()" style="cursor:pointer;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg>
+          <span>Sair</span>
+        </a>
+
+        <!-- Logo at bottom -->
+        <div class="sidebar-logo">
+          <img src="../../../assets/images/logo/alexandria-logo-mobile.png" alt="Alexandria" class="sidebar-logo-img">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-sidebar-container>

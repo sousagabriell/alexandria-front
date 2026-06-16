@@ -1,133 +1,128 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6 p-5 login-announcement d-flex align-items-center">
-            <!-- Step 1: User Information -->
-            <div class="mt-3 text-center" *ngIf="currentStep === 1">
-                <h3 class="text-call">Organize seus Livros!</h3>
-                <p class="mt-3">Inspirado na lendária Biblioteca de Alexandria, nosso aplicativo é uma plataforma
-                    sofisticada e intuitiva projetada para auxiliar estudantes de direito a organizar e acessar
-                    facilmente uma vasta gama de materiais educativos relacionados à graduação em Direito.</p>
-            </div>
+<div class="auth-page">
 
-            <!-- Step 2: Profile Photo and Password -->
-            <div class="mt-3 text-center" *ngIf="currentStep === 2">
-                <h3 class="text-call">Otimize seu tempo!</h3>
-                <p class="mt-3">Assim como a biblioteca histórica que abrigava o conhecimento do mundo antigo, o
-                    aplicativo Alexandria visa ser o repositório definitivo de recursos acadêmicos essenciais para
-                    estudantes de direito. Com uma interface elegante e amigável, o aplicativo oferece recursos
-                    poderosos para facilitar a pesquisa, organização e estudo de materiais jurídicos.</p>
-            </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-            <div class="login-account">
-                <h2>Cadastre-se</h2>
-                <img src="../../../assets/images/signup/step1.png" class="mt-3" *ngIf="currentStep === 1" alt="">
-                <h4 class="mt-4" *ngIf="currentStep === 1">Informações Pessoais</h4>
-                <img src="../../../assets/images/signup/step2.png" class="mt-3" *ngIf="currentStep === 2" alt="">
-                <h4 class="mt-4" *ngIf="currentStep === 2">Dados da Conta</h4>
+  <!-- Left: Atmospheric Panel -->
+  <div class="auth-right">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-                <!-- Step 1: User Information -->
-                <form *ngIf="currentStep === 1" method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="nextStep()">
-                    <form method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="postUser()">
-                        <div class="row g-3 align-items-center mt-3 d-block">
-                            <div class="d-flex mb-4">
-                                <div class="col-auto">
+    <div class="auth-visual-content">
+      <div class="quote-container" *ngIf="currentStep === 1">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Inspirado na lendária Biblioteca de Alexandria, o repositório definitivo
+          de recursos para organizar seu conhecimento.</p>
+        <span class="quote-author">Organize seus Livros</span>
+      </div>
 
-                                    <input id="inputPassword6" class="form-control "
-                                        aria-describedby="passwordHelpInline" placeholder="Nome*"
-                                        [(ngModel)]="users$.nome" name="nome" id="nome" formControlName="name">
-                                    <div *ngIf="form.get('name')?.errors && form.get('name')?.touched">
-                                        <span class="form-invalid">Nome obrigatório</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-4">
+      <div class="quote-container" *ngIf="currentStep === 2">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Com uma interface elegante e amigável, o Alexandria oferece recursos
+          poderosos para facilitar a pesquisa, organização e estudo dos seus materiais.</p>
+        <span class="quote-author">Otimize seu tempo</span>
+      </div>
 
-                                <div class="col-auto">
-                                    <input id="inputPassword6" class="form-control"
-                                        aria-describedby="passwordHelpInline" placeholder="Email*"
-                                        [(ngModel)]="users$.email" name="email" id="email" formControlName="email">
-                                    <div *ngIf="form.get('email')?.errors && form.get('email')?.touched">
-                                        <span class="form-invalid">Email inválido</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-4">
-
-                                <div class="col-auto">
-                                    <input id="inputPassword6" class="form-control"
-                                        aria-describedby="passwordHelpInline" placeholder="Usuario*"
-                                        [(ngModel)]="users$.usuario" name="usuario" id="usuario" formControlName="user">
-                                    <div *ngIf="form.get('user')?.errors && form.get('user')?.touched">
-                                        <span class="form-invalid">Usuário obrigatório</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="mb-4 mt-4">
-                        <div class="d-flex justify-content-between mb-3">
-                            <button class="btn btn-outline-secondary w-50 d-flex justify-content-center"
-                                routerLink="/login" (click)="previousStep()">
-                                <span>Voltar ao Login</span>
-                            </button>
-                            <button class="btn btn-primario d-flex justify-content-center" type="submit"
-                                (click)="currentStep=2">
-                                <span>Próximo</span>
-                            </button>
-                        </div>
-                    </form>
-                </form>
-
-                <!-- Step 2: Profile Photo and Password -->
-                <form *ngIf="currentStep === 2" method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="postUser()">
-                    <div class="d-flex mb-4">
-
-                        <div class="col-auto">
-                            <input id="inputPassword6" class="form-control mt-2" aria-describedby="passwordHelpInline"
-                                placeholder="Link para foto de perfil*" [(ngModel)]="users$.foto" name="foto" id="foto"
-                                formControlName="photo">
-                            <div *ngIf="form.get('photo')?.errors && form.get('photo')?.touched">
-                                <span class="form-invalid">Foto obrigatória</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-4">
-
-                        <div class="col-auto">
-                            <input type="password" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Senha*" [(ngModel)]="users$.senha"
-                                name="senha" id="senha" formControlName="password">
-                            <div *ngIf="form.get('password')?.errors && form.get('password')?.touched">
-                                <span class="form-invalid">Senha obrigatória</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-4">
-                        <div class="col-auto">
-                            <input type="password" id="inputPassword6" class="form-control"
-                                aria-describedby="passwordHelpInline" placeholder="Confirmar senha*"
-                                formControlName="confirmpassword">
-                            <div *ngIf="form.get('confirmpassword')?.errors && form.get('confirmpassword')?.touched">
-                                <span class="form-invalid">Senhas não coincidem</span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                </form>
-
-                <div class="d-flex justify-content-between mb-3">
-                    <button class="btn btn-outline-secondary w-25 d-flex justify-content-center"
-                        *ngIf="currentStep === 2" (click)="previousStep()">
-                        <span>Voltar</span>
-                    </button>
-
-                    <button class="btn btn-primario d-flex justify-content-center" type="submit"
-                        [disabled]="!form.valid" *ngIf="currentStep === 2">
-                        <span>Cadastre-se</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+      <div class="step-indicators">
+        <div class="step-dot" [class.active]="currentStep === 1"></div>
+        <div class="step-dot" [class.active]="currentStep === 2"></div>
+      </div>
     </div>
+  </div>
+
+  <!-- Right: Form Panel -->
+  <div class="auth-left">
+    <div class="auth-logo">
+      <img src="../../../assets/images/logo/alexandria-logo.png" alt="Alexandria" class="logo-img">
+    </div>
+
+    <div class="auth-card">
+      <h2 class="auth-title">Cadastre-se</h2>
+
+      <!-- Step indicators -->
+      <div class="step-progress">
+        <div class="step-bar" [class.active]="currentStep >= 1"></div>
+        <div class="step-bar" [class.active]="currentStep >= 2"></div>
+      </div>
+
+      <p class="step-label mt-3 mb-0">
+        <span *ngIf="currentStep === 1">Passo 1 de 2 — Informações Pessoais</span>
+        <span *ngIf="currentStep === 2">Passo 2 de 2 — Dados da Conta</span>
+      </p>
+
+      <!-- Step 1 -->
+      <form *ngIf="currentStep === 1" method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="nextStep()">
+        <form method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="postUser()">
+          <div class="auth-fields mt-4">
+            <div class="field-group">
+              <label>Nome completo*</label>
+              <input class="form-control" placeholder="Seu nome" [(ngModel)]="users$.nome"
+                name="nome" id="nome" formControlName="name">
+              <span class="form-invalid" *ngIf="form.get('name')?.errors && form.get('name')?.touched">
+                Nome obrigatório
+              </span>
+            </div>
+            <div class="field-group mt-3">
+              <label>Email*</label>
+              <input class="form-control" placeholder="seu@email.com" [(ngModel)]="users$.email"
+                name="email" id="email" formControlName="email">
+              <span class="form-invalid" *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+                Email inválido
+              </span>
+            </div>
+            <div class="field-group mt-3">
+              <label>Usuário*</label>
+              <input class="form-control" placeholder="@usuario" [(ngModel)]="users$.usuario"
+                name="usuario" id="usuario" formControlName="user">
+              <span class="form-invalid" *ngIf="form.get('user')?.errors && form.get('user')?.touched">
+                Usuário obrigatório
+              </span>
+            </div>
+          </div>
+
+          <div class="auth-actions mt-4">
+            <a routerLink="/login" class="btn btn-outline-secondary" (click)="previousStep()">Voltar ao Login</a>
+            <button class="btn btn-primario" type="submit" (click)="currentStep=2">Próximo</button>
+          </div>
+        </form>
+      </form>
+
+      <!-- Step 2 -->
+      <form *ngIf="currentStep === 2" method="post" #frm="ngForm" [formGroup]="form" (ngSubmit)="postUser()">
+        <div class="auth-fields mt-4">
+          <div class="field-group">
+            <label>Link para foto de perfil*</label>
+            <input class="form-control" placeholder="https://exemplo.com/foto.jpg"
+              [(ngModel)]="users$.foto" name="foto" id="foto" formControlName="photo">
+            <span class="form-invalid" *ngIf="form.get('photo')?.errors && form.get('photo')?.touched">
+              Foto obrigatória
+            </span>
+          </div>
+          <div class="field-group mt-3">
+            <label>Senha*</label>
+            <input type="password" class="form-control" placeholder="••••••••"
+              [(ngModel)]="users$.senha" name="senha" id="senha" formControlName="password">
+            <span class="form-invalid" *ngIf="form.get('password')?.errors && form.get('password')?.touched">
+              Senha obrigatória
+            </span>
+          </div>
+          <div class="field-group mt-3">
+            <label>Confirmar senha*</label>
+            <input type="password" class="form-control" placeholder="••••••••"
+              formControlName="confirmpassword">
+            <span class="form-invalid" *ngIf="form.get('confirmpassword')?.errors && form.get('confirmpassword')?.touched">
+              Senhas não coincidem
+            </span>
+          </div>
+        </div>
+
+        <div class="auth-actions mt-4">
+          <button class="btn btn-outline-secondary" type="button" (click)="previousStep()">Voltar</button>
+          <button class="btn btn-primario" type="submit" [disabled]="!form.valid">Cadastrar</button>
+        </div>
+      </form>
+
+      <div class="auth-divider"><span>ou</span></div>
+      <p class="auth-register">Já tem conta? <a routerLink="/login">Entrar</a></p>
+    </div>
+  </div>
+
 </div>
