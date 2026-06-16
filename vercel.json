@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build:prod",
+  "outputDirectory": "dist/alexandria",
+  "framework": null,
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--openssl-legacy-provider"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
